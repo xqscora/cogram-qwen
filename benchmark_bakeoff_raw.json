@@ -1,0 +1,721 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "conversation_id": "conv-26",
+  "n_turns": 419,
+  "token_budget": 2000,
+  "promotion": "novelty+surprise-mass (no frequency gate)",
+  "engram_tick": 19,
+  "n_questions": 15,
+  "category_counts": {
+    "1": 7,
+    "2": 7,
+    "3": 1
+  },
+  "vector_skipped": true,
+  "vector_skip_reason": "omitted for time (also only non-zero build-cost baseline)",
+  "summary": [
+    {
+      "retriever": "cooc_ppr",
+      "represents": "SPRIG / MemGraph-style PPR",
+      "accuracy": 0.4,
+      "correct": 6,
+      "valid": 15,
+      "avg_ctx_tokens": 1996.3333333333333,
+      "build_cost": "0 (statistics)"
+    },
+    {
+      "retriever": "bm25",
+      "represents": "Lexical / agent-knowledge",
+      "accuracy": 0.3333333333333333,
+      "correct": 5,
+      "valid": 15,
+      "avg_ctx_tokens": 1994.4,
+      "build_cost": "0 (statistics)"
+    },
+    {
+      "retriever": "engram_bm25",
+      "represents": "Engram substrate + pluggable BM25 ranker",
+      "accuracy": 0.26666666666666666,
+      "correct": 4,
+      "valid": 15,
+      "avg_ctx_tokens": 1993.8666666666666,
+      "build_cost": "0 (statistics)"
+    },
+    {
+      "retriever": "engram",
+      "represents": "Engram (zero-LLM concept graph)",
+      "accuracy": 0.2,
+      "correct": 3,
+      "valid": 15,
+      "avg_ctx_tokens": 1984.4666666666667,
+      "build_cost": "0 (statistics)"
+    },
+    {
+      "retriever": "random",
+      "represents": "Random floor",
+      "accuracy": 0.2,
+      "correct": 3,
+      "valid": 15,
+      "avg_ctx_tokens": 1988.0,
+      "build_cost": "0 (statistics)"
+    },
+    {
+      "retriever": "recency",
+      "represents": "Naive recency",
+      "accuracy": 0.06666666666666667,
+      "correct": 1,
+      "valid": 15,
+      "avg_ctx_tokens": 1999.0,
+      "build_cost": "0 (statistics)"
+    }
+  ],
+  "engram_rank_zero_llm": 4,
+  "old_engram_accuracy_count_ge_2": 0.167,
+  "results": [
+    {
+      "question": "What does Melanie do with her family on hikes?",
+      "category": 1,
+      "gold": "Roast marshmallows, tell stories",
+      "retrievers": {
+        "engram": {
+          "pred": "They explore nature and roast marshmallows around the campfire.",
+          "correct": true,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "They roast marshmallows and tell stories around the campfire.",
+          "correct": true,
+          "ctx_tokens": 1990,
+          "error": null
+        },
+        "bm25": {
+          "pred": "They roast marshmallows and tell stories around the campfire.",
+          "correct": true,
+          "ctx_tokens": 1990,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "They explore nature and roast marshmallows around the campfire.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "recency": {
+          "pred": "They bond over stories, campfires, and nature.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Melanie enjoys running farther to de-stress with her family.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What activities does Melanie partake in?",
+      "category": 1,
+      "gold": "pottery, camping, painting, swimming",
+      "retrievers": {
+        "engram": {
+          "pred": "Melanie enjoys running, reading, playing the violin, and spending time with her family.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Melanie participates in pottery classes and running.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Melanie participates in pottery classes and running.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Melanie enjoys pottery, camping, and volunteering.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "error": null
+        },
+        "recency": {
+          "pred": "Melanie paints, goes on road trips, enjoys camping, and supports poetry readings.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Melanie runs, does pottery, spends time with her kids, and enjoys camping.",
+          "correct": true,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What LGBTQ+ events has Caroline participated in?",
+      "category": 1,
+      "gold": "Pride parade, school speech, support group",
+      "retrievers": {
+        "engram": {
+          "pred": "Caroline participated in a school event where she talked about her transgender journey and encouraged students to get involved in the LGBTQ community.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline has participated in an LGBTQ support group, pride parade, LGBTQ conference, LGBTQ counseling workshop, mentorship program for LGBTQ youth, and is organizing an LGBTQ art show.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Caroline has participated in an LGBTQ support group, pride parade, LGBTQ conference, LGBTQ counseling workshop, mentorship program for LGBTQ youth, and is organizing an LGBTQ art show.",
+          "correct": true,
+          "ctx_tokens": 1986,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline has participated in an LGBTQ+ pride parade, an LGBTQ conference, and is organizing an LGBTQ art show.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "recency": {
+          "pred": "Caroline attended a transgender poetry reading.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Caroline attended a pride parade and an LGBTQ support group.",
+          "correct": true,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "How many times has Melanie gone to the beach in 2023?",
+      "category": 1,
+      "gold": "2",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not mention how many times Melanie has gone to the beach in 2023.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Once, usually only once or twice a year.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Once, usually only once or twice a year.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Twice.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not mention how many times Melanie has gone to the beach in 2023.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not mention how many times Melanie has gone to the beach in 2023.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What are some changes Caroline has faced during her transition journey?",
+      "category": 1,
+      "gold": "Changes to her body, losing unsupportive friends",
+      "retrievers": {
+        "engram": {
+          "pred": "Caroline has reflected on her growth, gained support, and become passionate about helping others in the LGBTQ community.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline has faced struggles with acceptance, self-discovery, and building a supportive community.",
+          "correct": false,
+          "ctx_tokens": 1987,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Caroline has faced challenges in self-acceptance, personal growth, and building supportive relationships.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline has faced challenges with acceptance, self-discovery, and the need for support from friends and family.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        },
+        "recency": {
+          "pred": "Caroline faced challenges in finding self-acceptance and navigating her transition.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Caroline has gained the courage to express herself authentically and feels accepted and supported by her community.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What events has Caroline participated in to help children?",
+      "category": 1,
+      "gold": "Mentoring program, school speech",
+      "retrievers": {
+        "engram": {
+          "pred": "Caroline is taking in kids in need and pursuing counseling to help others.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline attended a council meeting for adoption.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Caroline attended a council meeting for adoption.",
+          "correct": false,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline attended a council meeting for adoption and volunteered at an LGBTQ+ youth center.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "recency": {
+          "pred": "Caroline is pursuing adoption to provide a loving home for children in need.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Caroline has participated in a mentoring program and attended an adoption advice/assistance group.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What symbols are important to Caroline?",
+      "category": 1,
+      "gold": "Rainbow flag, transgender symbol",
+      "retrievers": {
+        "engram": {
+          "pred": "Caroline values her necklace from her grandma and a hand-painted bowl from a friend.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The rainbow flag and the eagle.",
+          "correct": false,
+          "ctx_tokens": 1994,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The rainbow flag and an eagle.",
+          "correct": false,
+          "ctx_tokens": 1995,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "The rainbow flag and an eagle symbolize courage, strength, freedom, and pride for Caroline.",
+          "correct": false,
+          "ctx_tokens": 1996,
+          "error": null
+        },
+        "recency": {
+          "pred": "Family, love, acceptance, and self-expression.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Art, community, love, and support.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "When did Caroline and Melanie go to a pride fesetival together?",
+      "category": 2,
+      "gold": "2022",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not mention Caroline and Melanie attending a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The conversation does not indicate that Caroline and Melanie went to a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The conversation does not indicate that Caroline and Melanie went to a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "The conversation does not mention Caroline and Melanie attending a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not mention Caroline and Melanie going to a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not indicate that Caroline and Melanie went to a pride festival together.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "When did Caroline join a new activist group?",
+      "category": 2,
+      "gold": "The Tuesday before 20 July 2023",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not mention Caroline joining a new activist group.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline joined a new LGBTQ activist group last Tuesday.",
+          "correct": false,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Last Tuesday.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Last Tuesday.",
+          "correct": false,
+          "ctx_tokens": 1996,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not mention Caroline joining a new activist group.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Caroline attended an adoption advice/assistance group this week.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "When did Caroline meet up with her friends, family, and mentors?",
+      "category": 2,
+      "gold": "The week before 9 June 2023",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not specify when Caroline met up with her friends, family, and mentors.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Last week.",
+          "correct": false,
+          "ctx_tokens": 1992,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Last week.",
+          "correct": false,
+          "ctx_tokens": 1986,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline met up with her friends, family, and mentors last week.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not specify when Caroline met up with her friends, family, and mentors.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Last week.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "How long has Melanie been practicing art?",
+      "category": 2,
+      "gold": "Since 2016",
+      "retrievers": {
+        "engram": {
+          "pred": "Melanie painted the lake sunrise last year, so she has been practicing art for at least a year.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The conversation does not specify how long Melanie has been practicing art.",
+          "correct": false,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The conversation does not specify how long Melanie has been practicing art.",
+          "correct": false,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "The conversation does not specify how long Melanie has been practicing art.",
+          "correct": false,
+          "ctx_tokens": 1996,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not specify how long Melanie has been practicing art.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not specify how long Melanie has been practicing art.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "When did Melanie go to the museum?",
+      "category": 2,
+      "gold": "5 July 2023",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not mention Melanie going to the museum.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Melanie took the kids to the museum yesterday.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Melanie took the kids to the museum yesterday.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Yesterday.",
+          "correct": false,
+          "ctx_tokens": 1987,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not mention Melanie going to the museum.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not mention Melanie going to the museum.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "How long ago was Caroline's 18th birthday?",
+      "category": 2,
+      "gold": "10 years ago",
+      "retrievers": {
+        "engram": {
+          "pred": "Ten years ago.",
+          "correct": true,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Ten years ago.",
+          "correct": true,
+          "ctx_tokens": 1983,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Ten years ago.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Ten years ago.",
+          "correct": true,
+          "ctx_tokens": 1989,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not provide information about Caroline's age or birthday.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not provide information about Caroline's age or when her 18th birthday was.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "How long has Caroline had her current group of friends for?",
+      "category": 2,
+      "gold": "4 years",
+      "retrievers": {
+        "engram": {
+          "pred": "The conversation does not specify how long Caroline has had her current group of friends.",
+          "correct": false,
+          "ctx_tokens": 1985,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline has known her current group of friends for 4 years.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Caroline has known her current group of friends for 4 years.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline has known her current friends for 4 years.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "error": null
+        },
+        "recency": {
+          "pred": "The conversation does not specify how long Caroline has had her current group of friends.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "The conversation does not specify how long Caroline has had her current group of friends.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    },
+    {
+      "question": "What would Caroline's political leaning likely be?",
+      "category": 3,
+      "gold": "Liberal",
+      "retrievers": {
+        "engram": {
+          "pred": "Caroline likely leans towards progressive or liberal views, given her involvement in LGBTQ support and advocacy.",
+          "correct": true,
+          "ctx_tokens": 1977,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Caroline likely leans towards progressive or supportive of LGBTQ+ rights.",
+          "correct": true,
+          "ctx_tokens": 1983,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Caroline likely leans towards progressive or supportive of LGBTQ+ rights.",
+          "correct": true,
+          "ctx_tokens": 1983,
+          "error": null
+        },
+        "cooc_ppr": {
+          "pred": "Caroline's political leaning would likely be progressive or supportive of LGBTQ+ rights.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "error": null
+        },
+        "recency": {
+          "pred": "Caroline likely leans towards progressive or liberal views, given her support for adoption, self-expression, and acceptance of diverse identities.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "error": null
+        },
+        "random": {
+          "pred": "Caroline likely leans towards progressive or liberal views, given her support for LGBTQ+ rights and equality.",
+          "correct": true,
+          "ctx_tokens": 1988,
+          "error": null
+        }
+      }
+    }
+  ]
+}

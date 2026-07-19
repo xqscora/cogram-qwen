@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cogram — Procedural memory for coding agents</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-row">
+      <div>
+        <h1>Cogram</h1>
+        <p class="subtitle">Remembers how past bugs got fixed. Decays with use, never deletes.</p>
+        <p class="subtitle" style="margin-top:6px"><strong>This page is the live demo</strong> — the full concept graph is loaded in your browser. Type any bug description below (or click a suggestion) and watch it recall real fixes with exact file:line provenance. Nothing to install.</p>
+      </div>
+      <div class="token-badge">
+        <div class="label">Recall cost for this query</div>
+        <div class="counts">
+          <span class="accent" id="budget-count">160</span>
+          <span> vs </span>
+          <span id="raw-count">—</span>
+          <span> raw tokens</span>
+        </div>
+        <span class="ratio-pill" id="ratio-pill">≈15,822× less</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <div class="controls-bar">
+      <div class="control-group grow">
+        <label for="query-input">Recall query — try a new bug description</label>
+        <div class="query-row">
+          <input type="text" id="query-input" placeholder="Ask the memory graph…" autocomplete="off" />
+          <button type="button" class="primary" id="query-btn">Spread</button>
+        </div>
+        <div class="status-line" id="status-line"></div>
+        <div class="query-chips" id="query-chips"></div>
+      </div>
+      <div class="control-group tick-control">
+        <label for="tick-slider">Experienced time (ticks = trajectories seen)</label>
+        <output id="tick-value">600</output>
+        <input type="range" id="tick-slider" min="1" max="600" value="600" step="1" />
+        <span class="tick-hint">Drag back in time — edges fade toward floor ε but never vanish.</span>
+      </div>
+    </div>
+
+    <div class="graph-pane">
+      <div id="cy"></div>
+      <div class="graph-legend">
+        Faded edges = forgotten but recoverable (decay → floor ε, never zero). Built from 600 real SWE-agent trajectories, zero LLM calls.
+      </div>
+    </div>
+
+    <aside class="side-panel">
+      <section class="panel-section" id="ku-section">
+        <div class="section-label">Procedural memory hit</div>
+        <h2>New bug report → recalled fix</h2>
+        <div class="ku-callout" id="ku-callout"></div>
+      </section>
+      <section class="panel-section">
+        <div class="section-label">Provenance</div>
+        <h2>Activated sources (exact file:line)</h2>
+      </section>
+      <div class="provenance-list" id="provenance-list">
+        <p class="prov-empty">Run a query to trace concepts back to source lines.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="pros-cons-strip" style="padding-bottom:0">
+    <h2>What this saves, in dollars</h2>
+    <p class="positioning-lead" style="max-width:none">The naive way to give an agent memory is to replay its history into the context window — measured at <strong>~109k tokens per question</strong> on LongMemEval. A Cogram recall is <strong>~300 tokens</strong> for the same answer quality (see benchmark below). At $3 per million input tokens, that's <strong>$0.33 vs. $0.001 per lookup</strong> — for a team running 1,000 agent memory lookups a day, roughly <strong>$120k/year vs. $330/year</strong>. And because recall is pure graph traversal with zero LLM calls, it returns in milliseconds instead of waiting on a 100k-token prompt.</p>
+  </section>
+
+  <section class="pros-cons-strip" style="padding-bottom:0">
+    <h2>Path to adoption</h2>
+    <p class="positioning-lead" style="max-width:none"><strong>Now:</strong> open-source core, pip-installable into any Python agent loop in two lines (below) — Apache 2.0 for this Qwen Cloud submission, free to build on. <strong>Next:</strong> drop-in adapters for SWE-agent, OpenHands, and Claude Code hooks, so memory is attached with zero code. <strong>Generation layer:</strong> <code>qwen_agent.py</code> turns a zero-token recall into a grounded answer via Qwen Cloud's OpenAI-compatible API, deployed on Alibaba Cloud Function Compute (<code>deploy/</code>) — so the memory layer stays free and open, and the only recurring cost is the one Qwen Cloud call per query, not re-feeding raw history.</p>
+  </section>
+
+  <section class="pros-cons-strip" style="padding-bottom:0">
+    <h2>Use it in your own agent — one pip install</h2>
+    <div class="pros-cons-grid">
+      <div class="pc-col">
+        <div class="pc-label">Install</div>
+        <pre style="background:var(--panel-bg,#f4f5f7);border:1px solid var(--border,#dcdfe4);border-radius:6px;padding:14px 16px;overflow-x:auto;font-size:0.85rem"><code>pip install git+https://github.com/xqscora/cogram.git</code></pre>
+      </div>
+      <div class="pc-col">
+        <div class="pc-label">Two lines in your agent loop</div>
+        <pre style="background:var(--panel-bg,#f4f5f7);border:1px solid var(--border,#dcdfe4);border-radius:6px;padding:14px 16px;overflow-x:auto;font-size:0.85rem"><code>import memory_api
+hits = memory_api.recommend(task)  # start of turn
+memory_api.end_turn()              # end of turn: learn + tick</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="pros-cons-strip">
+    <h2>Where this is strong, where it isn't</h2>
+    <div class="pros-cons-grid">
+      <div class="pc-col pc-pro">
+        <div class="pc-label">Pros</div>
+        <ul>
+          <li>Graph is built with <strong>zero LLM calls</strong> — co-occurrence + a novelty/surprise signal, not a model summarizing anything. Can't hallucinate a memory that never happened.</li>
+          <li>Forgetting has a <strong>floor, not a cliff</strong> — edges decay toward ε but are never deleted, and get re-lit the moment they're relevant again.</li>
+          <li>Decay runs on <strong>ticks (real interactions)</strong>, not wall-clock days — an idle agent's memory doesn't erode just because time passed.</li>
+          <li>Every recall points to an exact <strong>file:line</strong> in the original transcript — never a generated summary, always checkable.</li>
+          <li>~4.4× smaller on disk than raw transcripts; ~150–400 tokens per recall vs. thousands to replay full history.</li>
+          <li>Routing is measured, not cherry-picked: <strong>43.3% top-1 same-repo recall vs. 2.9% chance (~15×)</strong> on 150 sampled bug reports, zero LLM calls — see <code>benchmark_procedural_precision_results.md</code>.</li>
+        </ul>
+      </div>
+      <div class="pc-col pc-con">
+        <div class="pc-label">Cons — said plainly</div>
+        <ul>
+          <li>Not the first zero-LLM concept-graph memory — SPRIG (arXiv:2602.23372) and MemGraph-agent already proved this general approach works.</li>
+          <li>On LongMemEval, our graph's ranking <strong>ties</strong> the best lexical baseline (BM25) rather than beating it outright — see appendix below.</li>
+          <li>It can only recall what the agent actually lived through — no prior trajectory, no memory of it.</li>
+          <li>"Concept-of-concepts" (promoting a whole bug→fix pattern into one reusable node) is <strong>implemented and mining real motifs</strong> (32 on the current corpus, reinforced across 87 distinct trajectories) — but <strong>not yet wired into live recall or the benchmarks</strong>, so it doesn't move today's numbers. See <code>CONCEPT_OF_CONCEPTS.md</code>.</li>
+          <li>Directed "next" transitions are still a first-order heuristic — the precision benchmark validates <em>which line</em> gets recalled, not yet whether the "next step" ordering itself is correct.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bottom-strip">
+    <h2>Also holds up on standard conversational-memory benchmarks (secondary evidence)</h2>
+    <p class="positioning-lead">Procedural memory is the primary claim above. This table is from a different benchmark (LongMemEval, ICLR 2025) included so the general-memory numbers are on the record too.</p>
+    <table class="results-table" id="results-table">
+      <thead>
+        <tr>
+          <th>Retriever</th>
+          <th>Accuracy</th>
+          <th>Avg ctx tokens</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="positioning" id="positioning-caption"></p>
+  </footer>
+
+  <script src="vendor/cytoscape.min.js"></script>
+  <script src="app.js?v=8"></script>
+</body>
+</html>

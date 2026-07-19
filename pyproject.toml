@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cogram-qwen"
+version = "0.1.0"
+description = "Cogram MemoryAgent - zero-LLM procedural memory layer for coding agents (concept graph with tick-based decay and file:line provenance) + Qwen Cloud generation step. Global AI Hackathon Series with Qwen Cloud, Track 1: MemoryAgent."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Cora Zeng" }]
+requires-python = ">=3.9"
+dependencies = [
+    "tiktoken>=0.7.0",
+    "jieba>=0.42.1",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+data = ["pyarrow>=15.0.0"]
+qwen = ["openai>=1.40.0"]
+
+[project.urls]
+Homepage = "https://cogram.cora.zone"
+Repository = "https://github.com/xqscora/cogram-qwen"
+Canonical = "https://github.com/xqscora/cogram"
+
+[project.scripts]
+cogram-demo = "swe_recall_demo:main"
+
+[tool.setuptools]
+py-modules = [
+    "graph_lib",
+    "recall",
+    "learn",
+    "extract",
+    "memory_api",
+    "swe_recall_demo",
+    "qwen_agent",
+]

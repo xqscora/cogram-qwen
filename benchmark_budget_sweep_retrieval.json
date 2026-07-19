@@ -1,0 +1,175 @@
+{
+  "sampling_seed": 42,
+  "n_questions": 48,
+  "budgets": [
+    500,
+    1000,
+    1500,
+    2000
+  ],
+  "note": "gold_in_ctx is extractive proxy, NOT LLM-judged accuracy",
+  "llm_accuracy_available_budgets": [
+    2000
+  ],
+  "results": {
+    "500": {
+      "budget": 500,
+      "n_questions": 48,
+      "bm25_avg_ctx": 492.4791666666667,
+      "engram_avg_ctx": 493.0833333333333,
+      "bm25_gold_in_ctx_rate": 0.7708333333333334,
+      "engram_gold_in_ctx_rate": 0.7708333333333334,
+      "identical_line_sets": 38,
+      "by_type": {
+        "single-session-user": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 4
+        },
+        "multi-session": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 1
+        },
+        "knowledge-update": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 2
+        },
+        "temporal-reasoning": {
+          "bm25_gold_in_ctx": 0.625,
+          "engram_gold_in_ctx": 0.625,
+          "retrieval_diffs": 0
+        },
+        "single-session-preference": {
+          "bm25_gold_in_ctx": 1.0,
+          "engram_gold_in_ctx": 1.0,
+          "retrieval_diffs": 1
+        },
+        "single-session-assistant": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 2
+        }
+      }
+    },
+    "1000": {
+      "budget": 1000,
+      "n_questions": 48,
+      "bm25_avg_ctx": 992.1875,
+      "engram_avg_ctx": 991.9375,
+      "bm25_gold_in_ctx_rate": 0.8125,
+      "engram_gold_in_ctx_rate": 0.7916666666666666,
+      "identical_line_sets": 36,
+      "by_type": {
+        "single-session-user": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 6
+        },
+        "multi-session": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 1
+        },
+        "knowledge-update": {
+          "bm25_gold_in_ctx": 0.625,
+          "engram_gold_in_ctx": 0.625,
+          "retrieval_diffs": 0
+        },
+        "temporal-reasoning": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 0
+        },
+        "single-session-preference": {
+          "bm25_gold_in_ctx": 1.0,
+          "engram_gold_in_ctx": 1.0,
+          "retrieval_diffs": 3
+        },
+        "single-session-assistant": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 2
+        }
+      }
+    },
+    "1500": {
+      "budget": 1500,
+      "n_questions": 48,
+      "bm25_avg_ctx": 1492.375,
+      "engram_avg_ctx": 1492.3958333333333,
+      "bm25_gold_in_ctx_rate": 0.875,
+      "engram_gold_in_ctx_rate": 0.875,
+      "identical_line_sets": 38,
+      "by_type": {
+        "single-session-user": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 4
+        },
+        "multi-session": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 1
+        },
+        "knowledge-update": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 1
+        },
+        "temporal-reasoning": {
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 3
+        },
+        "single-session-preference": {
+          "bm25_gold_in_ctx": 1.0,
+          "engram_gold_in_ctx": 1.0,
+          "retrieval_diffs": 0
+        },
+        "single-session-assistant": {
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 1
+        }
+      }
+    },
+    "2000": {
+      "budget": 2000,
+      "n_questions": 48,
+      "bm25_avg_ctx": 1992.75,
+      "engram_avg_ctx": 1991.6666666666667,
+      "bm25_gold_in_ctx_rate": 0.8958333333333334,
+      "engram_gold_in_ctx_rate": 0.8958333333333334,
+      "identical_line_sets": 34,
+      "by_type": {
+        "knowledge-update": {
+          "bm25_llm": 0.375,
+          "engram_llm": 0.375,
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 4
+        },
+        "multi-session": {
+          "bm25_llm": 0.5,
+          "engram_llm": 0.5,
+          "bm25_gold_in_ctx": 0.875,
+          "engram_gold_in_ctx": 0.875,
+          "retrieval_diffs": 3
+        },
+        "temporal-reasoning": {
+          "bm25_llm": 0.5,
+          "engram_llm": 0.5,
+          "bm25_gold_in_ctx": 0.75,
+          "engram_gold_in_ctx": 0.75,
+          "retrieval_diffs": 2
+        }
+      },
+      "bm25_llm_accuracy": 0.5833333333333334,
+      "engram_llm_accuracy": 0.5833333333333334,
+      "bm25_llm_correct": 28,
+      "engram_llm_correct": 28
+    }
+  }
+}

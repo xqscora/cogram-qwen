@@ -1,0 +1,561 @@
+/* Engram demo — cool editorial paper + steel-blue accent (v4) */
+
+:root {
+  --bg: #f7f8f9;
+  --bg-alt: #f2f4f5;
+  --text: #1a1d20;
+  --text-muted: #5d666e;
+  --border: #d7dde1;
+  --accent: #5b84a8;
+  --accent-dark: #4a6b8a;
+  --accent-soft: rgba(91, 132, 168, 0.12);
+  --accent-glow: rgba(91, 132, 168, 0.35);
+  --amber-ring: rgba(201, 146, 58, 0.45);
+  --node-fill: #b9c2c9;
+  --node-stroke: #9aa5ad;
+  --shadow: 0 1px 3px rgba(26, 29, 32, 0.06);
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+
+.site-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.site-header .subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.token-badge {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.token-badge .label {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.token-badge .counts {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+}
+
+.token-badge .counts .accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.token-badge .ratio-pill {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 2px;
+}
+
+/* --- Main layout --- */
+
+.main-grid {
+  /* NOT flex:1 + min-height:0 — with more page content than 100vh, that combo
+     lets flexbox shrink this grid's margin box down to whatever scrap of space
+     is "left over" after the other body-level siblings (pros/cons, footer),
+     while its actual content (graph pane, 420px min) paints outside that box
+     and visually overlaps the next sections. Fixed min-height keeps the box
+     honest; flex-grow:1 still lets it stretch taller on tall viewports. */
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  min-height: 520px;
+}
+
+.controls-bar {
+  grid-column: 1 / -1;
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.control-group.grow {
+  flex: 1;
+  min-width: 280px;
+}
+
+.control-group label {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.query-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-line {
+  min-height: 1rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+.status-line.error {
+  color: #a84a4a;
+  font-variant: normal;
+}
+
+.query-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.chip {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.72rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#query-input {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+#query-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+button.primary {
+  padding: 0.55rem 1.1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 0.15s;
+}
+
+button.primary:hover {
+  opacity: 0.88;
+}
+
+button.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tick slider */
+
+.tick-control {
+  min-width: 220px;
+}
+
+.tick-control output {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+  margin-top: 0.25rem;
+}
+
+.tick-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  max-width: 260px;
+}
+
+/* --- Graph pane --- */
+
+.graph-pane {
+  position: relative;
+  min-height: 420px;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+
+#cy {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+}
+
+.graph-legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  max-width: 320px;
+  padding: 0.6rem 0.85rem;
+  background: rgba(247, 248, 249, 0.92);
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  box-shadow: var(--shadow);
+}
+
+/* --- Side panel --- */
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: calc(100vh - 12rem);
+  background: var(--bg-alt);
+  overflow: hidden;
+}
+
+.panel-section {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#ku-section {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: min(42vh, 320px);
+  overflow-y: auto;
+}
+
+.panel-section h2 {
+  margin: 0 0 0.65rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.panel-section .section-label {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.provenance-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1.25rem 1rem;
+  min-height: 0;
+}
+
+.prov-item {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.prov-item:last-child {
+  border-bottom: none;
+}
+
+.prov-item .prov-meta {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.prov-item .prov-score {
+  color: var(--accent);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-size: 0.65rem;
+}
+
+.prov-item.answer-hit {
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--amber-ring);
+  background: rgba(201, 146, 58, 0.06);
+}
+
+.prov-empty {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* Knowledge update callout */
+
+.ku-callout {
+  font-size: 0.82rem;
+}
+
+.ku-block {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.ku-block.stale {
+  opacity: 0.72;
+}
+
+.ku-block.fresh {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.ku-block .ku-tag {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.ku-block.fresh .ku-tag {
+  color: var(--accent);
+}
+
+/* --- Pros / cons strip --- */
+
+.pros-cons-strip {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2.5rem 1.75rem;
+  background: var(--bg-alt);
+}
+
+.pros-cons-strip h2 {
+  margin: 0 0 1rem;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2.5rem;
+}
+
+.pc-col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pc-col li {
+  margin-bottom: 0.6rem;
+}
+
+.pc-col li strong {
+  color: var(--accent-dark);
+}
+
+.pc-col code {
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+}
+
+.pc-label {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.pc-pro .pc-label {
+  color: var(--accent);
+}
+
+.pc-con .pc-label {
+  color: #a8794a;
+}
+
+@media (max-width: 760px) {
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Bottom strip --- */
+
+.bottom-strip {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2.5rem 1.75rem;
+  background: var(--bg);
+}
+
+.bottom-strip h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-bottom: 0.85rem;
+}
+
+.results-table th,
+.results-table td {
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table th {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.results-table td.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.positioning-lead {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.5;
+  margin: 0 0 0.85rem;
+  font-style: italic;
+}
+
+.positioning {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+.positioning cite {
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 960px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .graph-pane {
+    border-right: none;
+    min-height: 360px;
+  }
+
+  .side-panel {
+    max-height: 420px;
+  }
+
+  .header-row {
+    flex-direction: column;
+  }
+
+  .token-badge {
+    text-align: left;
+  }
+}

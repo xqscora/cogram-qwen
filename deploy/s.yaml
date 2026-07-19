@@ -1,0 +1,36 @@
+# Serverless Devs deployment config for Alibaba Cloud Function Compute.
+# Deploys the Cogram MemoryAgent (qwen_agent.py + fc_handler.py) as an HTTP
+# function. See deploy/README.md for step-by-step setup.
+#
+# Install:  npm install -g @serverless-devs/s
+# Auth:     s config add --AccessKeyID <key> --AccessKeySecret <secret>
+# Deploy:   cd deploy && s deploy
+
+edition: 3.0.0
+name: cogram-memoryagent-app
+access: default
+
+resources:
+  cogram-memoryagent:
+    component: fc3
+    props:
+      region: ap-southeast-1
+      functionName: cogram-memoryagent
+      description: "Cogram zero-LLM procedural memory + Qwen Cloud generation (AGI Hackathon MemoryAgent track)"
+      runtime: python3.10
+      code: ../
+      handler: deploy/fc_handler.handler
+      memorySize: 512
+      timeout: 60
+      environmentVariables:
+        DASHSCOPE_API_KEY: ${env(DASHSCOPE_API_KEY)}
+        QWEN_MODEL: qwen-plus
+        COGRAM_GRAPH: swe_concept_graph.json
+      triggers:
+        - triggerName: httpTrigger
+          triggerType: http
+          triggerConfig:
+            authType: anonymous
+            methods:
+              - GET
+              - POST

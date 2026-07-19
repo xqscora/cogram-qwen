@@ -1,0 +1,2031 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "dataset": "longmemeval_s_cleaned.json",
+  "benchmark_round": 3,
+  "sampling_seed": 42,
+  "n_questions": 48,
+  "target_types": [
+    "single-session-user",
+    "multi-session",
+    "knowledge-update",
+    "temporal-reasoning",
+    "single-session-preference",
+    "single-session-assistant"
+  ],
+  "per_type": 8,
+  "type_pick_counts": {
+    "single-session-user": 8,
+    "multi-session": 8,
+    "knowledge-update": 8,
+    "temporal-reasoning": 8,
+    "single-session-preference": 8,
+    "single-session-assistant": 8
+  },
+  "round2_overlap": {
+    "question_overlap": 6,
+    "fresh_questions": 42,
+    "overlap_ids": [
+      "58bf7951",
+      "852ce960",
+      "gpt4_f49edff3",
+      "0edc2aef",
+      "75832dbd",
+      "89527b6b"
+    ]
+  },
+  "token_budget": 2000,
+  "engram_bm25_lambda": 0.5,
+  "retriever_impl_version": {},
+  "full_context_trunc_cap": 30000,
+  "full_context_truncated_count": 48,
+  "avg_graph_build_sec": 20.830695441769382,
+  "question_ids": [
+    "726462e0",
+    "58bf7951",
+    "60d45044",
+    "d52b4f67",
+    "a06e4cfe",
+    "ad7109d1",
+    "3b6f954b",
+    "ccb36322",
+    "gpt4_7fce9456",
+    "bc149d6b",
+    "gpt4_f2262a51",
+    "aae3761f",
+    "d682f1a2",
+    "81507db6",
+    "60bf93ed_abs",
+    "e5ba910e_abs",
+    "07741c45",
+    "852ce960",
+    "031748ae_abs",
+    "618f13b2",
+    "0977f2af",
+    "dfde3500",
+    "01493427",
+    "a2f3aa27",
+    "gpt4_b5700ca0",
+    "gpt4_f49edff3",
+    "gpt4_21adecb5",
+    "993da5e2",
+    "gpt4_70e84552",
+    "bcbe585f",
+    "71017277",
+    "gpt4_6ed717ea",
+    "0edc2aef",
+    "75832dbd",
+    "1a1907b4",
+    "0a34ad58",
+    "6b7dfb22",
+    "b0479f84",
+    "75f70248",
+    "caf03d32",
+    "c7cf7dfd",
+    "89527b6b",
+    "ac031881",
+    "e8a79c70",
+    "e982271f",
+    "1903aded",
+    "8752c811",
+    "6ae235be"
+  ],
+  "summary": {
+    "overall": [
+      {
+        "retriever": "bm25",
+        "accuracy": 0.5833333333333334,
+        "correct": 28,
+        "valid": 48,
+        "avg_ctx_tokens": 1992.75,
+        "avg_cost_usd": 0.0007778250000000002
+      },
+      {
+        "retriever": "engram_bm25",
+        "accuracy": 0.5833333333333334,
+        "correct": 28,
+        "valid": 48,
+        "avg_ctx_tokens": 1991.6666666666667,
+        "avg_cost_usd": 0.0007775000000000003
+      },
+      {
+        "retriever": "full_context",
+        "accuracy": 0.3541666666666667,
+        "correct": 17,
+        "valid": 48,
+        "avg_ctx_tokens": 89468.64583333333,
+        "avg_cost_usd": 0.027020593750000006
+      }
+    ],
+    "by_type": [
+      {
+        "question_type": "single-session-user",
+        "full_context": 0.75,
+        "full_context_n": 8,
+        "bm25": 1.0,
+        "bm25_n": 8,
+        "engram_bm25": 1.0,
+        "engram_bm25_n": 8
+      },
+      {
+        "question_type": "multi-session",
+        "full_context": 0.375,
+        "full_context_n": 8,
+        "bm25": 0.5,
+        "bm25_n": 8,
+        "engram_bm25": 0.5,
+        "engram_bm25_n": 8
+      },
+      {
+        "question_type": "knowledge-update",
+        "full_context": 0.625,
+        "full_context_n": 8,
+        "bm25": 0.375,
+        "bm25_n": 8,
+        "engram_bm25": 0.375,
+        "engram_bm25_n": 8
+      },
+      {
+        "question_type": "temporal-reasoning",
+        "full_context": 0.125,
+        "full_context_n": 8,
+        "bm25": 0.5,
+        "bm25_n": 8,
+        "engram_bm25": 0.5,
+        "engram_bm25_n": 8
+      },
+      {
+        "question_type": "single-session-preference",
+        "full_context": 0.0,
+        "full_context_n": 8,
+        "bm25": 0.25,
+        "bm25_n": 8,
+        "engram_bm25": 0.25,
+        "engram_bm25_n": 8
+      },
+      {
+        "question_type": "single-session-assistant",
+        "full_context": 0.25,
+        "full_context_n": 8,
+        "bm25": 0.875,
+        "bm25_n": 8,
+        "engram_bm25": 0.875,
+        "engram_bm25_n": 8
+      }
+    ]
+  },
+  "token_economics": {
+    "avg_full_tokens": 89468.64583333333,
+    "avg_budget_tokens": 1992.2083333333335,
+    "token_ratio": 44.909281994436654,
+    "cost_ratio": 34.74591323356854
+  },
+  "honest_read": "At n=48 (stratified random, seed=42), **engram_bm25** (58%) ≥ BM25 (58%) overall. Best budget retriever (58%) matches or beats full-context (35%) on this slice. **knowledge-update:** engram_bm25=38% ties bm25=38%. **multi-session:** full_context=38%, bm25=50%, engram_bm25=50%. **single-session-preference:** full_context underperforms budget methods (preference questions may need targeted retrieval, not full haystack). Token economics: full-context ~45× more context tokens than budget retrievers (~35× estimated API cost). engram / engram_expand omitted in Round 3 (established at n=24). **full_context caveat:** **mixed caps** (110,000×39, 8,000×3, 3,000×6 rows) — default 30,000; lower caps used when OpenRouter credit prompt limit hit mid-run. Compare budget retrievers fairly; full_context is not a uniform ~110k baseline on this run.",
+  "cache_reuse_notes": "Round 3: stratified random sample, seed=42, 8 per type × 6 types = 48 questions.\nRound 2 overlap: 6 question IDs (may reuse cached retriever rows).\nFresh vs Round 2 first-4-per-type: 42 questions.\nRetrievers: full_context, bm25, engram_bm25 only (engram/engram_expand dropped).\n- full_context: reused=48, rerun=0\n- bm25: reused=48, rerun=0\n- engram_bm25: reused=48, rerun=0",
+  "cache_reused": {
+    "full_context": 48,
+    "bm25": 48,
+    "engram_bm25": 48
+  },
+  "cache_rerun": {},
+  "incomplete": {
+    "target_questions": 48,
+    "valid_questions": 48,
+    "error_questions": 0,
+    "error_reason": "OpenRouter API error (see raw JSON retriever error fields)"
+  },
+  "results": [
+    {
+      "question_id": "726462e0",
+      "question_type": "single-session-user",
+      "question": "What was the discount I got on my first purchase from the new clothing brand?",
+      "question_date": "2023/05/30 (Tue) 23:15",
+      "gold": "10%",
+      "retrievers": {
+        "full_context": {
+          "pred": "You received a 10% discount on your first purchase from the new clothing brand.",
+          "correct": true,
+          "ctx_tokens": 109086,
+          "est_cost_usd": 0.0329058,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You got a 10% discount on your first purchase from the new clothing brand.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You got a 10% discount on your first purchase from the new clothing brand.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        }
+      },
+      "n_lines": 501,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 28828,
+      "graph_build_sec": 20.324,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "58bf7951",
+      "question_type": "single-session-user",
+      "question": "What play did I attend at the local community theater?",
+      "question_date": "2023/05/30 (Tue) 22:53",
+      "gold": "The Glass Menagerie",
+      "retrievers": {
+        "full_context": {
+          "pred": "You attended a production of \"The Glass Menagerie\" at the local community theater.",
+          "correct": true,
+          "ctx_tokens": 108877,
+          "est_cost_usd": 0.0328431,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You attended a production of The Glass Menagerie.",
+          "correct": true,
+          "ctx_tokens": 1992,
+          "est_cost_usd": 0.0007775999999999998,
+          "error": null
+        },
+        "engram": {
+          "pred": "The conversation history does not mention any play attended at the local community theater.",
+          "correct": false,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "You attended a production of The Glass Menagerie.",
+          "correct": true,
+          "ctx_tokens": 1992,
+          "est_cost_usd": 0.0007775999999999998,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "You attended \"The Glass Menagerie\" at the local community theater.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 616,
+      "n_sessions": 57,
+      "graph_concepts": 1500,
+      "graph_edges": 28387,
+      "graph_build_sec": 17.482,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "60d45044",
+      "question_type": "single-session-user",
+      "question": "What type of rice is my favorite?",
+      "question_date": "2023/05/30 (Tue) 20:46",
+      "gold": "Japanese short-grain rice",
+      "retrievers": {
+        "full_context": {
+          "pred": "Your favorite type of rice is Japanese short-grain rice.",
+          "correct": true,
+          "ctx_tokens": 109442,
+          "est_cost_usd": 0.033012599999999996,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Your favorite type of rice is Japanese short-grain rice.",
+          "correct": true,
+          "ctx_tokens": 1986,
+          "est_cost_usd": 0.0007757999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Your favorite type of rice is Japanese short-grain rice.",
+          "correct": true,
+          "ctx_tokens": 1986,
+          "est_cost_usd": 0.0007757999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 541,
+      "n_sessions": 51,
+      "graph_concepts": 1500,
+      "graph_edges": 28819,
+      "graph_build_sec": 18.968,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "d52b4f67",
+      "question_type": "single-session-user",
+      "question": "Where did I attend my cousin's wedding?",
+      "question_date": "2023/05/30 (Tue) 23:57",
+      "gold": "The Grand Ballroom",
+      "retrievers": {
+        "full_context": {
+          "pred": "You attended your cousin's wedding at the Grand Ballroom.",
+          "correct": true,
+          "ctx_tokens": 109148,
+          "est_cost_usd": 0.0329244,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You attended your cousin's wedding at the Grand Ballroom.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You attended your cousin's wedding at the Grand Ballroom.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        }
+      },
+      "n_lines": 479,
+      "n_sessions": 52,
+      "graph_concepts": 1500,
+      "graph_edges": 28822,
+      "graph_build_sec": 22.425,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "a06e4cfe",
+      "question_type": "single-session-user",
+      "question": "What is my preferred gin-to-vermouth ratio for a classic gin martini?",
+      "question_date": "2023/05/30 (Tue) 23:48",
+      "gold": "3:1",
+      "retrievers": {
+        "full_context": {
+          "pred": "Your preferred gin-to-vermouth ratio for a classic gin martini is 3:1.",
+          "correct": true,
+          "ctx_tokens": 109019,
+          "est_cost_usd": 0.0328857,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Your preferred gin-to-vermouth ratio for a classic gin martini is 3:1.",
+          "correct": true,
+          "ctx_tokens": 1980,
+          "est_cost_usd": 0.000774,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Your preferred gin-to-vermouth ratio for a classic gin martini is 3:1.",
+          "correct": true,
+          "ctx_tokens": 1980,
+          "est_cost_usd": 0.000774,
+          "error": null
+        }
+      },
+      "n_lines": 534,
+      "n_sessions": 53,
+      "graph_concepts": 1500,
+      "graph_edges": 29098,
+      "graph_build_sec": 19.471,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "ad7109d1",
+      "question_type": "single-session-user",
+      "question": "What speed is my new internet plan?",
+      "question_date": "2023/05/30 (Tue) 21:56",
+      "gold": "500 Mbps",
+      "retrievers": {
+        "full_context": {
+          "pred": "Your new internet plan is 500 Mbps, which is a significant upgrade and should provide you with fast and reliable internet for streaming, browsing, and other online activities.",
+          "correct": true,
+          "ctx_tokens": 109264,
+          "est_cost_usd": 0.0329592,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Your new internet plan is 500 Mbps.",
+          "correct": true,
+          "ctx_tokens": 1986,
+          "est_cost_usd": 0.0007757999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Your new internet plan is 500 Mbps.",
+          "correct": true,
+          "ctx_tokens": 1986,
+          "est_cost_usd": 0.0007757999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 466,
+      "n_sessions": 44,
+      "graph_concepts": 1500,
+      "graph_edges": 28972,
+      "graph_build_sec": 17.716,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "3b6f954b",
+      "question_type": "single-session-user",
+      "question": "Where did I attend for my study abroad program?",
+      "question_date": "2023/05/30 (Tue) 16:24",
+      "gold": "University of Melbourne in Australia",
+      "retrievers": {
+        "full_context": {
+          "pred": "I'm sorry, but I don't have any information about your study abroad program or where you attended. If you provide me with more context or details, I may be able to assist you better!",
+          "correct": false,
+          "ctx_tokens": 109228,
+          "est_cost_usd": 0.0329484,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You attended the University of Melbourne for your study abroad program.",
+          "correct": true,
+          "ctx_tokens": 1983,
+          "est_cost_usd": 0.0007749,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You attended the University of Melbourne for your study abroad program.",
+          "correct": true,
+          "ctx_tokens": 1978,
+          "est_cost_usd": 0.0007734,
+          "error": null
+        }
+      },
+      "n_lines": 470,
+      "n_sessions": 50,
+      "graph_concepts": 1500,
+      "graph_edges": 28779,
+      "graph_build_sec": 19.092,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "ccb36322",
+      "question_type": "single-session-user",
+      "question": "What is the name of the music streaming service have I been using lately?",
+      "question_date": "2023/05/30 (Tue) 23:26",
+      "gold": "Spotify",
+      "retrievers": {
+        "full_context": {
+          "pred": "You have been using Netflix for streaming shows and documentaries lately.",
+          "correct": false,
+          "ctx_tokens": 109122,
+          "est_cost_usd": 0.0329166,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You've been using Spotify lately.",
+          "correct": true,
+          "ctx_tokens": 1996,
+          "est_cost_usd": 0.0007787999999999998,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You've been using Spotify lately.",
+          "correct": true,
+          "ctx_tokens": 1988,
+          "est_cost_usd": 0.0007764,
+          "error": null
+        }
+      },
+      "n_lines": 471,
+      "n_sessions": 46,
+      "graph_concepts": 1500,
+      "graph_edges": 28958,
+      "graph_build_sec": 18.393,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_7fce9456",
+      "question_type": "multi-session",
+      "question": "How many properties did I view before making an offer on the townhouse in the Brookside neighborhood?",
+      "question_date": "2023/03/08 (Wed) 23:58",
+      "gold": "I viewed four properties before making an offer on the townhouse in the Brookside neighborhood. The reasons I didn't make an offer on them were: the kitchen of the bungalow needed serious renovation, the property in Cedar Creek was out of my budget, the noise from the highway was a deal-breaker for the 1-bedroom condo, and my offer on the 2-bedroom condo was rejected due to a higher bid.",
+      "retrievers": {
+        "full_context": {
+          "pred": "You viewed a 1-bedroom condo on February 10th before making an offer on the townhouse in the Brookside neighborhood.",
+          "correct": false,
+          "ctx_tokens": 108760,
+          "est_cost_usd": 0.032808,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You viewed the townhouse on February 22nd before making an offer on February 25th.",
+          "correct": false,
+          "ctx_tokens": 1984,
+          "est_cost_usd": 0.0007752,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You viewed the townhouse on February 22nd before making an offer on February 25th.",
+          "correct": false,
+          "ctx_tokens": 1984,
+          "est_cost_usd": 0.0007752,
+          "error": null
+        }
+      },
+      "n_lines": 493,
+      "n_sessions": 44,
+      "graph_concepts": 1500,
+      "graph_edges": 29185,
+      "graph_build_sec": 18.79,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "bc149d6b",
+      "question_type": "multi-session",
+      "question": "What is the total weight of the new feed I purchased in the past two months?",
+      "question_date": "2023/05/30 (Tue) 22:02",
+      "gold": "70 pounds",
+      "retrievers": {
+        "full_context": {
+          "pred": "To calculate the total weight of the new feed you purchased in the past two months, we need to know the weight of each purchase. You mentioned earlier that you bought a 50-pound batch of layer feed and also mentioned purchasing 20 pounds of organic scratch grains. \n\nSo, the total weight would be:\n\n50 pounds (layer feed) + 20 pounds (scratch grains) = 70 pounds\n\nTherefore, the total weight of the new feed you purchased in the past two months is 70 pounds.",
+          "correct": true,
+          "ctx_tokens": 109073,
+          "est_cost_usd": 0.0329019,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The total weight of the new feed you purchased is 50 pounds.",
+          "correct": false,
+          "ctx_tokens": 1993,
+          "est_cost_usd": 0.0007779,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The total weight of the new feed you purchased is 50 pounds.",
+          "correct": false,
+          "ctx_tokens": 1988,
+          "est_cost_usd": 0.0007764,
+          "error": null
+        }
+      },
+      "n_lines": 467,
+      "n_sessions": 46,
+      "graph_concepts": 1500,
+      "graph_edges": 28888,
+      "graph_build_sec": 18.704,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_f2262a51",
+      "question_type": "multi-session",
+      "question": "How many different doctors did I visit?",
+      "question_date": "2023/05/30 (Tue) 21:43",
+      "gold": "I visited three different doctors: a primary care physician, an ENT specialist, and a dermatologist.",
+      "retrievers": {
+        "full_context": {
+          "pred": "You visited two doctors: Dr. Patel, the ENT specialist, and Dr. Smith, your primary care physician.",
+          "correct": false,
+          "ctx_tokens": 109107,
+          "est_cost_usd": 0.0329121,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The conversation history does not provide information about the number of different doctors you visited.",
+          "correct": false,
+          "ctx_tokens": 1994,
+          "est_cost_usd": 0.0007781999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The conversation history does not provide information about the number of different doctors you visited.",
+          "correct": false,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 479,
+      "n_sessions": 45,
+      "graph_concepts": 1500,
+      "graph_edges": 29074,
+      "graph_build_sec": 19.874,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "aae3761f",
+      "question_type": "multi-session",
+      "question": "How many hours in total did I spend driving to my three road trip destinations combined?",
+      "question_date": "2023/05/30 (Tue) 19:37",
+      "gold": "15 hours for getting to the three destinations (or 30 hours for the round trip)",
+      "retrievers": {
+        "full_context": {
+          "pred": "To calculate the total hours spent driving to your three road trip destinations, please provide the driving times for each destination. Once I have that information, I can help you add them up!",
+          "correct": false,
+          "ctx_tokens": 108824,
+          "est_cost_usd": 0.0328272,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You spent a total of 15 hours driving to your three road trip destinations: 4 hours to Outer Banks, 7-8 hours to Tybee Island, and 6 hours to Washington D.C.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You spent a total of 15 hours driving to your three road trip destinations: 4 hours to Outer Banks, 7-8 hours to Tybee Island, and 6 hours to Washington D.C.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 485,
+      "n_sessions": 47,
+      "graph_concepts": 1500,
+      "graph_edges": 29003,
+      "graph_build_sec": 17.951,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "d682f1a2",
+      "question_type": "multi-session",
+      "question": "How many different types of food delivery services have I used recently?",
+      "question_date": "2023/05/30 (Tue) 23:30",
+      "gold": "3",
+      "retrievers": {
+        "full_context": {
+          "pred": "Based on the conversation, you mentioned using Uber Eats recently for convenience, and you also mentioned a new service called Fresh Fusion that offers pre-made meals. Therefore, it seems you have used at least two different food delivery services recently.",
+          "correct": false,
+          "ctx_tokens": 109382,
+          "est_cost_usd": 0.0329946,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You've mentioned using at least two food delivery services: Domino's Pizza and Fresh Fusion.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You've mentioned using at least two food delivery services: Domino's Pizza and Fresh Fusion.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 469,
+      "n_sessions": 47,
+      "graph_concepts": 1500,
+      "graph_edges": 28748,
+      "graph_build_sec": 19.852,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "81507db6",
+      "question_type": "multi-session",
+      "question": "How many graduation ceremonies have I attended in the past three months?",
+      "question_date": "2023/07/21 (Fri) 23:33",
+      "gold": "3",
+      "retrievers": {
+        "full_context": {
+          "pred": "You mentioned attending your little cousin Emma's preschool graduation ceremony about two months ago and your colleague Alex's graduation from a leadership development program a couple of weeks ago. That makes a total of two graduation ceremonies you've attended in the past three months.",
+          "correct": false,
+          "ctx_tokens": 109406,
+          "est_cost_usd": 0.0330018,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You have attended three graduation ceremonies in the past three months.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You have attended three graduation ceremonies in the past three months.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        }
+      },
+      "n_lines": 510,
+      "n_sessions": 50,
+      "graph_concepts": 1500,
+      "graph_edges": 29009,
+      "graph_build_sec": 19.923,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "60bf93ed_abs",
+      "question_type": "multi-session",
+      "question": "How many days did it take for my iPad case to arrive after I bought it?",
+      "question_date": "2023/01/24 (Tue) 23:58",
+      "gold": "The information provided is not enough. You did not mention buying an iPad case.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The iPad case arrived on January 20th, but the purchase date was not specified in the conversation. Therefore, I cannot determine the exact number of days it took for the case to arrive after the purchase. If you provide the purchase date, I can help calculate the delivery time.",
+          "correct": true,
+          "ctx_tokens": 108806,
+          "est_cost_usd": 0.0328218,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The conversation history does not mention the purchase or arrival of an iPad case, so I cannot provide that information.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The conversation history does not mention the purchase or arrival of an iPad case, so I cannot provide that information.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 521,
+      "n_sessions": 51,
+      "graph_concepts": 1500,
+      "graph_edges": 28948,
+      "graph_build_sec": 19.379,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "e5ba910e_abs",
+      "question_type": "multi-session",
+      "question": "What is the total cost of my recently purchased headphones and the iPad?",
+      "question_date": "2023/05/30 (Tue) 17:19",
+      "gold": "The information provided is not enough. You mentioned purchasing a headphone, but you did not mention the iPad.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The total cost of your recently purchased Sony WH-1000XM4 headphones is $378. However, you did not provide the cost of the iPad. Please provide the price of the iPad, and I can calculate the total cost for you.",
+          "correct": true,
+          "ctx_tokens": 109305,
+          "est_cost_usd": 0.0329715,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The total cost of your Sony WH-1000XM4 headphones is $378, but there is no mention of the iPad's cost in the conversation history.",
+          "correct": true,
+          "ctx_tokens": 1991,
+          "est_cost_usd": 0.0007773000000000001,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The total cost of your Sony WH-1000XM4 headphones is $378, but there is no mention of the iPad's cost in the conversation history.",
+          "correct": true,
+          "ctx_tokens": 1991,
+          "est_cost_usd": 0.0007773000000000001,
+          "error": null
+        }
+      },
+      "n_lines": 522,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 29015,
+      "graph_build_sec": 18.097,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "07741c45",
+      "question_type": "knowledge-update",
+      "question": "Where do I currently keep my old sneakers?",
+      "question_date": "2023/06/23 (Fri) 07:31",
+      "gold": "in a shoe rack in my closet",
+      "retrievers": {
+        "full_context": {
+          "pred": "You currently keep your old sneakers in a shoe rack in your closet.",
+          "correct": true,
+          "ctx_tokens": 109225,
+          "est_cost_usd": 0.0329475,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You currently keep your old sneakers under your bed for storage.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You currently keep your old sneakers under your bed for storage.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 527,
+      "n_sessions": 49,
+      "graph_concepts": 1500,
+      "graph_edges": 28661,
+      "graph_build_sec": 17.379,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "852ce960",
+      "question_type": "knowledge-update",
+      "question": "What was the amount I was pre-approved for when I got my mortgage from Wells Fargo?",
+      "question_date": "2023/12/18 (Mon) 04:17",
+      "gold": "$400,000",
+      "retrievers": {
+        "full_context": {
+          "pred": "You were pre-approved for $400,000 from Wells Fargo.",
+          "correct": true,
+          "ctx_tokens": 109111,
+          "est_cost_usd": 0.0329133,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You were pre-approved for $350,000 from Wells Fargo.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        },
+        "engram": {
+          "pred": "The conversation history does not contain any information about a mortgage or a pre-approved amount from Wells Fargo.",
+          "correct": false,
+          "ctx_tokens": 1990,
+          "est_cost_usd": 0.0007769999999999999,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "You were pre-approved for $350,000 from Wells Fargo.",
+          "correct": false,
+          "ctx_tokens": 1977,
+          "est_cost_usd": 0.0007730999999999999,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "You were pre-approved for $350,000 from Wells Fargo.",
+          "correct": false,
+          "ctx_tokens": 1993,
+          "est_cost_usd": 0.0007779,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 396,
+      "n_sessions": 39,
+      "graph_concepts": 1500,
+      "graph_edges": 29228,
+      "graph_build_sec": 36.039,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "031748ae_abs",
+      "question_type": "knowledge-update",
+      "question": "How many engineers do I lead when I just started my new role as Software Engineer Manager?",
+      "question_date": "2023/06/06 (Tue) 08:19",
+      "gold": "The information provided is not enough. You mentioned starting the role as Senior Software Engineer but not Software Engineer Manager.",
+      "retrievers": {
+        "full_context": {
+          "pred": "You lead a team of 4 engineers in your new role as Software Engineer Manager.",
+          "correct": false,
+          "ctx_tokens": 109311,
+          "est_cost_usd": 0.0329733,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You lead a team of 4 engineers in your new role as Senior Software Engineer.",
+          "correct": false,
+          "ctx_tokens": 1986,
+          "est_cost_usd": 0.0007757999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You lead a team of 4 engineers in your new role as Senior Software Engineer.",
+          "correct": false,
+          "ctx_tokens": 1989,
+          "est_cost_usd": 0.0007767,
+          "error": null
+        }
+      },
+      "n_lines": 523,
+      "n_sessions": 52,
+      "graph_concepts": 1500,
+      "graph_edges": 28740,
+      "graph_build_sec": 19.201,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "618f13b2",
+      "question_type": "knowledge-update",
+      "question": "How many times have I worn my new black Converse Chuck Taylor All Star sneakers?",
+      "question_date": "2023/06/18 (Sun) 22:29",
+      "gold": "six",
+      "retrievers": {
+        "full_context": {
+          "pred": "You have worn your new black Converse Chuck Taylor All Star sneakers six times, including to your friend's birthday party last Saturday.",
+          "correct": true,
+          "ctx_tokens": 109472,
+          "est_cost_usd": 0.0330216,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You have worn your new black Converse Chuck Taylor All Star sneakers six times.",
+          "correct": true,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You have worn your new black Converse Chuck Taylor All Star sneakers six times.",
+          "correct": true,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 506,
+      "n_sessions": 49,
+      "graph_concepts": 1500,
+      "graph_edges": 29132,
+      "graph_build_sec": 18.625,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "0977f2af",
+      "question_type": "knowledge-update",
+      "question": "What new kitchen gadget did I invest in before getting the Air Fryer?",
+      "question_date": "2023/05/31 (Wed) 07:54",
+      "gold": "Instant Pot",
+      "retrievers": {
+        "full_context": {
+          "pred": "You mentioned that you got an Air Fryer recently, but you didn't specify any other kitchen gadgets you invested in before that. If you have a specific gadget in mind, please let me know!",
+          "correct": false,
+          "ctx_tokens": 109099,
+          "est_cost_usd": 0.0329097,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You got an Air Fryer.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You got an Air Fryer.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 484,
+      "n_sessions": 44,
+      "graph_concepts": 1500,
+      "graph_edges": 29045,
+      "graph_build_sec": 19.768,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "dfde3500",
+      "question_type": "knowledge-update",
+      "question": "What day of the week did I meet with my previous language exchange tutor Juan?",
+      "question_date": "2023/06/20 (Tue) 14:46",
+      "gold": "Wednesday",
+      "retrievers": {
+        "full_context": {
+          "pred": "You met with your previous language exchange tutor Juan on Wednesday evening.",
+          "correct": true,
+          "ctx_tokens": 109419,
+          "est_cost_usd": 0.0330057,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You met with Juan on Wednesday evening.",
+          "correct": true,
+          "ctx_tokens": 1985,
+          "est_cost_usd": 0.0007754999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You met with Juan on Wednesday evening.",
+          "correct": true,
+          "ctx_tokens": 1985,
+          "est_cost_usd": 0.0007754999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 480,
+      "n_sessions": 47,
+      "graph_concepts": 1500,
+      "graph_edges": 29079,
+      "graph_build_sec": 18.899,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "01493427",
+      "question_type": "knowledge-update",
+      "question": "How many new postcards have I added to my collection since I started collecting again?",
+      "question_date": "2023/12/21 (Thu) 21:31",
+      "gold": "25",
+      "retrievers": {
+        "full_context": {
+          "pred": "You have added 25 new postcards to your collection since you started collecting again.",
+          "correct": true,
+          "ctx_tokens": 108845,
+          "est_cost_usd": 0.032833499999999995,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You have added 25 new postcards to your collection since you started collecting again.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You have added 25 new postcards to your collection since you started collecting again.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null
+        }
+      },
+      "n_lines": 487,
+      "n_sessions": 47,
+      "graph_concepts": 1500,
+      "graph_edges": 29189,
+      "graph_build_sec": 19.854,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "a2f3aa27",
+      "question_type": "knowledge-update",
+      "question": "How many followers do I have on Instagram now?",
+      "question_date": "2023/06/15 (Thu) 23:26",
+      "gold": "1300",
+      "retrievers": {
+        "full_context": {
+          "pred": "You mentioned earlier that you have around 1250 followers on Instagram. If you have any updates or changes to that number, feel free to share! Would you like to continue discussing your Instagram strategy or any other topic?",
+          "correct": false,
+          "ctx_tokens": 109524,
+          "est_cost_usd": 0.033037199999999996,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You have 1250 followers on Instagram now.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You have 1250 followers on Instagram now.",
+          "correct": false,
+          "ctx_tokens": 1982,
+          "est_cost_usd": 0.0007745999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 448,
+      "n_sessions": 44,
+      "graph_concepts": 1500,
+      "graph_edges": 29154,
+      "graph_build_sec": 20.031,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_b5700ca0",
+      "question_type": "temporal-reasoning",
+      "question": "Where did I attend the religious activity last week?",
+      "question_date": "2023/04/10 (Mon) 13:35",
+      "gold": "the Episcopal Church",
+      "retrievers": {
+        "full_context": {
+          "pred": "You attended the Maundy Thursday service at the Episcopal Church.",
+          "correct": true,
+          "ctx_tokens": 109043,
+          "est_cost_usd": 0.032892899999999996,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You attended the Maundy Thursday service at the Episcopal Church.",
+          "correct": true,
+          "ctx_tokens": 1996,
+          "est_cost_usd": 0.0007787999999999998,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You attended the Maundy Thursday service at the Episcopal Church.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        }
+      },
+      "n_lines": 500,
+      "n_sessions": 50,
+      "graph_concepts": 1500,
+      "graph_edges": 28987,
+      "graph_build_sec": 19.962,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_f49edff3",
+      "question_type": "temporal-reasoning",
+      "question": "Which three events happened in the order from first to last: the day I helped my friend prepare the nursery, the day I helped my cousin pick out stuff for her baby shower, and the day I ordered a customized phone case for my friend's birthday?",
+      "question_date": "2023/03/22 (Wed) 21:49",
+      "gold": "First, I helped my friend prepare the nursery, then I helped my cousin pick out stuff for her baby shower, and lastly, I ordered a customized phone case for my friend's birthday.",
+      "retrievers": {
+        "full_context": {
+          "pred": "1. The day I helped my cousin pick out stuff for her baby shower.\n2. The day I helped my friend prepare the nursery.\n3. The day I ordered a customized phone case for my friend's birthday.",
+          "correct": false,
+          "ctx_tokens": 109033,
+          "est_cost_usd": 0.0328899,
+          "error": null
+        },
+        "bm25": {
+          "pred": "1. The day you helped your friend prepare the nursery (February 5).\n2. The day you helped your cousin pick out stuff for her baby shower (February 10).\n3. The day you ordered a customized phone case for your friend's birthday (February 20).",
+          "correct": true,
+          "ctx_tokens": 1994,
+          "est_cost_usd": 0.0007781999999999999,
+          "error": null
+        },
+        "engram": {
+          "pred": "1. Helped cousin pick out stuff for her baby shower.\n2. Helped friend prepare the nursery.\n3. Ordered a customized phone case for friend's birthday.",
+          "correct": false,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "1. The day you helped your friend prepare the nursery (February 5).\n2. The day you helped your cousin pick out stuff for her baby shower (February 10).\n3. The day you ordered a customized phone case for your friend's birthday (February 20).",
+          "correct": true,
+          "ctx_tokens": 1994,
+          "est_cost_usd": 0.0007781999999999999,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "1. The day you helped your friend prepare the nursery (February 5).\n2. The day you helped your cousin pick out stuff for her baby shower (February 10).\n3. The day you ordered a customized phone case for your friend's birthday (February 20).",
+          "correct": true,
+          "ctx_tokens": 1994,
+          "est_cost_usd": 0.0007781999999999999,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 498,
+      "n_sessions": 47,
+      "graph_concepts": 1500,
+      "graph_edges": 28849,
+      "graph_build_sec": 19.03,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_21adecb5",
+      "question_type": "temporal-reasoning",
+      "question": "How many months passed between the completion of my undergraduate degree and the submission of my master's thesis?",
+      "question_date": "2023/07/01 (Sat) 08:16",
+      "gold": "6 months",
+      "retrievers": {
+        "full_context": {
+          "pred": "Approximately 4 months passed between the completion of your undergraduate degree and the submission of your master's thesis, as you mentioned submitting your thesis on May 15 and completing your undergraduate degree on January 20.",
+          "correct": false,
+          "ctx_tokens": 109370,
+          "est_cost_usd": 0.032991,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Seven months passed between the completion of your undergraduate degree and the submission of your master's thesis.",
+          "correct": false,
+          "ctx_tokens": 1991,
+          "est_cost_usd": 0.0007773000000000001,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Seven months passed between the completion of your undergraduate degree and the submission of your master's thesis.",
+          "correct": false,
+          "ctx_tokens": 1991,
+          "est_cost_usd": 0.0007773000000000001,
+          "error": null
+        }
+      },
+      "n_lines": 511,
+      "n_sessions": 52,
+      "graph_concepts": 1500,
+      "graph_edges": 28935,
+      "graph_build_sec": 22.624,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "993da5e2",
+      "question_type": "temporal-reasoning",
+      "question": "How long had I been using the new area rug when I rearranged my living room furniture?",
+      "question_date": "2023/05/26 (Fri) 17:49",
+      "gold": "One week. Answers ranging from 7 days to 10 days are also acceptable.",
+      "retrievers": {
+        "full_context": {
+          "pred": "You had been using the new area rug for about a month when you rearranged your living room furniture.",
+          "correct": false,
+          "ctx_tokens": 108621,
+          "est_cost_usd": 0.0327663,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You had been using the new area rug for about a month when you rearranged your living room furniture three weeks ago.",
+          "correct": false,
+          "ctx_tokens": 1989,
+          "est_cost_usd": 0.0007767,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You had been using the new area rug for about three weeks when you rearranged your living room furniture.",
+          "correct": false,
+          "ctx_tokens": 1989,
+          "est_cost_usd": 0.0007767,
+          "error": null
+        }
+      },
+      "n_lines": 486,
+      "n_sessions": 49,
+      "graph_concepts": 1500,
+      "graph_edges": 29124,
+      "graph_build_sec": 20.441,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_70e84552",
+      "question_type": "temporal-reasoning",
+      "question": "Which task did I complete first, fixing the fence or trimming the goats' hooves?",
+      "question_date": "2023/05/25 (Thu) 08:03",
+      "gold": "Fixing the fence",
+      "retrievers": {
+        "full_context": {
+          "pred": "You completed the task of trimming the goats' hooves first, as you mentioned that you did it two weeks ago, while you fixed the broken fence three weeks ago.",
+          "correct": false,
+          "ctx_tokens": 108893,
+          "est_cost_usd": 0.0328479,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You fixed the fence first, three weeks ago, before trimming the goats' hooves two weeks ago.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You fixed the fence first, three weeks ago, before trimming the goats' hooves two weeks ago.",
+          "correct": true,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 467,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 29183,
+      "graph_build_sec": 21.537,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "bcbe585f",
+      "question_type": "temporal-reasoning",
+      "question": "How many weeks ago did I attend a bird watching workshop at the local Audubon society?",
+      "question_date": "2023/05/01 (Mon) 23:16",
+      "gold": "4",
+      "retrievers": {
+        "full_context": {
+          "pred": "You attended the bird watching workshop three weeks ago.",
+          "correct": false,
+          "ctx_tokens": 109258,
+          "est_cost_usd": 0.0329574,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You attended the bird watching workshop at the local Audubon society three weeks ago.",
+          "correct": false,
+          "ctx_tokens": 1990,
+          "est_cost_usd": 0.0007769999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You attended the bird watching workshop at the local Audubon society three weeks ago.",
+          "correct": false,
+          "ctx_tokens": 1990,
+          "est_cost_usd": 0.0007769999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 453,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 29090,
+      "graph_build_sec": 20.854,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "71017277",
+      "question_type": "temporal-reasoning",
+      "question": "I received a piece of jewelry last Saturday from whom?",
+      "question_date": "2023/03/09 (Thu) 15:47",
+      "gold": "my aunt",
+      "retrievers": {
+        "full_context": {
+          "pred": "You mentioned that you received a stunning crystal chandelier from your aunt, which used to belong to your great-grandmother.",
+          "correct": false,
+          "ctx_tokens": 108886,
+          "est_cost_usd": 0.032845799999999994,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You mentioned receiving a piece of jewelry on March 4, but you didn't specify from whom.",
+          "correct": false,
+          "ctx_tokens": 1978,
+          "est_cost_usd": 0.0007734,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You did not mention receiving a piece of jewelry last Saturday.",
+          "correct": false,
+          "ctx_tokens": 1978,
+          "est_cost_usd": 0.0007734,
+          "error": null
+        }
+      },
+      "n_lines": 493,
+      "n_sessions": 51,
+      "graph_concepts": 1500,
+      "graph_edges": 28933,
+      "graph_build_sec": 20.603,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "gpt4_6ed717ea",
+      "question_type": "temporal-reasoning",
+      "question": "Which item did I purchase first, the dog bed for Max or the training pads for Luna?",
+      "question_date": "2023/05/29 (Mon) 08:51",
+      "gold": "Training pads for Luna",
+      "retrievers": {
+        "full_context": {
+          "pred": "You purchased the dog bed for Max first, about three weeks ago, before getting the eco-friendly training pads for Luna.",
+          "correct": false,
+          "ctx_tokens": 109158,
+          "est_cost_usd": 0.0329274,
+          "error": null
+        },
+        "bm25": {
+          "pred": "You purchased the training pads for Luna first, about a month ago, before getting the dog bed for Max three weeks ago.",
+          "correct": true,
+          "ctx_tokens": 1982,
+          "est_cost_usd": 0.0007745999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You purchased the training pads for Luna first, about a month ago, before getting the dog bed for Max three weeks ago.",
+          "correct": true,
+          "ctx_tokens": 1982,
+          "est_cost_usd": 0.0007745999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 489,
+      "n_sessions": 46,
+      "graph_concepts": 1500,
+      "graph_edges": 29279,
+      "graph_build_sec": 21.22,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "0edc2aef",
+      "question_type": "single-session-preference",
+      "question": "Can you suggest a hotel for my upcoming trip to Miami?",
+      "question_date": "2023/05/30 (Tue) 20:23",
+      "gold": "The user would prefer suggestions of hotels in Miami that offer great views, possibly of the ocean or the city skyline, and have unique features such as a rooftop pool or a hot tub on the balcony. They may not prefer suggestions of basic or budget hotels without these features.",
+      "retrievers": {
+        "full_context": {
+          "pred": "For your upcoming trip to Miami, I recommend considering the following hotels:\n\n1. **The Fontainebleau Miami Beach**: A luxurious beachfront hotel known for its stunning architecture, vibrant nightlife, and multiple dining options. It features a beautiful pool area and direct beach access.\n\n2. **The Ritz-Carlton Key Biscayne**: Located on a private beach, this upscale hotel offers elegant accommodations, a full-service spa, and various recreational activities, including tennis and water sports.\n\n3. **EAST Miami**: Situated in the Brickell City Centre, this modern hotel features stylish rooms with city views, a rooftop bar, and easy",
+          "correct": false,
+          "ctx_tokens": 109537,
+          "est_cost_usd": 0.0330411,
+          "error": null
+        },
+        "bm25": {
+          "pred": "I don't have specific hotel recommendations for Miami, but consider looking for hotels with great views on travel websites or apps.",
+          "correct": false,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        },
+        "engram": {
+          "pred": "I don't have specific hotel recommendations for Miami in the provided context.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "I don't have specific hotel recommendations for Miami, but you can look for hotels with great views on travel websites or apps.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "I don't have specific hotel recommendations for Miami in the provided context.",
+          "correct": false,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 475,
+      "n_sessions": 46,
+      "graph_concepts": 1500,
+      "graph_edges": 29200,
+      "graph_build_sec": 20.128,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "75832dbd",
+      "question_type": "single-session-preference",
+      "question": "Can you recommend some recent publications or conferences that I might find interesting?",
+      "question_date": "2023/05/30 (Tue) 13:53",
+      "gold": "The user would prefer suggestions related to recent research papers, articles, or conferences that focus on artificial intelligence in healthcare, particularly those that involve deep learning for medical image analysis. They would not be interested in general AI topics or those unrelated to healthcare.",
+      "retrievers": {
+        "full_context": {
+          "pred": "Here are some recent publications and conferences related to your interests in digital product design, AI, and sustainability that you might find interesting:\n\n**Recent Publications:**\n\n1. **\"Designing for Sustainability: A Guide to Sustainable Product Design\"** - This publication explores principles and practices for integrating sustainability into product design, offering case studies and practical examples.\n2. **\"Artificial Intelligence and the Future of Design\"** - A comprehensive look at how AI is transforming design processes, including user experience and product development.\n3. **\"The Role of User-Centered Design in Sustainable Product Development\"** - This article discusses the importance of user-centered design",
+          "correct": false,
+          "ctx_tokens": 109100,
+          "est_cost_usd": 0.03291,
+          "error": null
+        },
+        "bm25": {
+          "pred": "I don't have specific recommendations for recent publications or conferences based on the provided context.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram": {
+          "pred": "You might find recent publications in AI conferences like NeurIPS, CVPR, ICML, ICLR, and ICCV interesting.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "I don't have specific recommendations for recent publications or conferences in the provided context.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "I don't have specific recent publications or conferences mentioned in the chat history.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 474,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 28923,
+      "graph_build_sec": 20.104,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "1a1907b4",
+      "question_type": "single-session-preference",
+      "question": "I've been thinking about making a cocktail for an upcoming get-together, but I'm not sure which one to choose. Any suggestions?",
+      "question_date": "2023/05/30 (Tue) 22:31",
+      "gold": "Considering their mixology class background, the user would prefer cocktail suggestions that build upon their existing skills and interests, such as creative variations of classic cocktails or innovative twists on familiar flavors. They might appreciate recommendations that incorporate their experience with refreshing summer drinks like Pimm's Cup. The user would not prefer overly simplistic or basic cocktail recipes, and may not be interested in suggestions that don't take into account their mixology class background.",
+      "retrievers": {
+        "full_context": {
+          "pred": "For your upcoming get-together, how about trying a refreshing **Mojito**? It's a classic cocktail that's easy to make and always a crowd-pleaser. Here's a simple recipe:\n\n**Mojito Recipe:**\n\n**Ingredients:**\n- 10 fresh mint leaves\n- 1/2 lime, cut into 4 wedges\n- 2 tablespoons sugar (or simple syrup)\n- 1 cup ice cubes\n- 1 1/2 ounces white rum\n- 1/2 cup club soda\n- Extra mint sprigs and lime wedges for garnish\n\n**Instructions:**\n1. In a sturdy glass",
+          "correct": false,
+          "ctx_tokens": 109369,
+          "est_cost_usd": 0.0329907,
+          "error": null
+        },
+        "bm25": {
+          "pred": "How about a Pimm's Cup with a Twist? It's refreshing and perfect for summer gatherings!",
+          "correct": true,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "How about a Pimm's Cup with a Twist? It's refreshing and perfect for summer gatherings!",
+          "correct": true,
+          "ctx_tokens": 1995,
+          "est_cost_usd": 0.0007784999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 532,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 29108,
+      "graph_build_sec": 20.982,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "0a34ad58",
+      "question_type": "single-session-preference",
+      "question": "I’m a bit anxious about getting around Tokyo. Do you have any helpful tips?",
+      "question_date": "2023/05/30 (Tue) 22:40",
+      "gold": "The user would prefer responses that utilize their existing resources, such as their Suica card and TripIt app, to provide personalized tips for navigating Tokyo's public transportation. They might not prefer general tips or recommendations that do not take into account their prior preparations.",
+      "retrievers": {
+        "full_context": {
+          "pred": "Navigating Tokyo can be a bit overwhelming at first, but with some preparation and tips, you'll find it manageable and even enjoyable. Here are some helpful tips for getting around Tokyo:\n\n1. **Use Public Transportation**: Tokyo has an extensive and efficient public transportation system, including trains and subways. The JR Yamanote Line is a circular line that connects major districts and is a great starting point for getting around.\n\n2. **Get a Suica or Pasmo Card**: These prepaid IC cards make traveling on trains and buses easy. You can load money onto the card and simply tap it at the ticket gates. They can also",
+          "correct": false,
+          "ctx_tokens": 108942,
+          "est_cost_usd": 0.0328626,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Use a Suica card for convenient travel, familiarize yourself with train routes, and consider downloading a navigation app for assistance.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Use a Suica card for convenient travel, familiarize yourself with train routes, and consider downloading a navigation app for assistance.",
+          "correct": false,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 485,
+      "n_sessions": 42,
+      "graph_concepts": 1500,
+      "graph_edges": 29205,
+      "graph_build_sec": 21.063,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "6b7dfb22",
+      "question_type": "single-session-preference",
+      "question": "I've been feeling a bit stuck with my paintings lately. Do you have any ideas on how I can find new inspiration?",
+      "question_date": "2023/05/30 (Tue) 13:57",
+      "gold": "The user would prefer responses that build upon their existing sources of inspiration, such as revisiting Instagram art accounts or exploring new techniques from online tutorials. They might also appreciate suggestions that revisit previous themes they found enjoyable, like painting flowers. The user would not prefer generic or vague suggestions for finding inspiration, and would likely appreciate responses that utilize their recent 30-day painting challenge experience.",
+      "retrievers": {
+        "full_context": {
+          "pred": "Feeling stuck in your creative process is completely normal, and seeking new inspiration can help reignite your passion for painting. Here are some ideas to help you find fresh inspiration for your artwork:\n\n1. **Explore Nature**: Spend time outdoors, whether it's a park, beach, or forest. Observe the colors, shapes, and textures around you, and consider incorporating these elements into your paintings.\n\n2. **Visit Art Galleries and Museums**: Take a trip to local galleries or museums to see the work of other artists. Pay attention to different styles, techniques, and themes that resonate with you.\n\n3. **Join Art Classes or Workshops**",
+          "correct": false,
+          "ctx_tokens": 109340,
+          "est_cost_usd": 0.032982,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Consider exploring different art styles, visiting local galleries, or participating in art challenges to spark new ideas.",
+          "correct": false,
+          "ctx_tokens": 1993,
+          "est_cost_usd": 0.0007779,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Consider exploring different art styles, visiting galleries, or participating in art challenges to spark new ideas.",
+          "correct": false,
+          "ctx_tokens": 1993,
+          "est_cost_usd": 0.0007779,
+          "error": null
+        }
+      },
+      "n_lines": 471,
+      "n_sessions": 45,
+      "graph_concepts": 1500,
+      "graph_edges": 29002,
+      "graph_build_sec": 20.442,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "b0479f84",
+      "question_type": "single-session-preference",
+      "question": "I've got some free time tonight, any documentary recommendations?",
+      "question_date": "2023/05/30 (Tue) 22:56",
+      "gold": "The user would prefer documentary recommendations that are similar in style and theme to 'Our Planet', 'Free Solo', and 'Tiger King', which they have previously enjoyed. They might not prefer recommendations of documentaries that are vastly different in tone or subject matter from these titles. The preferred response utilizes the user's previously mentioned viewing history to suggest documentaries that cater to their tastes.",
+      "retrievers": {
+        "full_context": {
+          "pred": "Here are some engaging documentary recommendations you might enjoy:\n\n1. **13th** (Netflix) - A powerful exploration of the history of racial inequality in the United States, focusing on the intersection of race, justice, and mass incarceration.\n\n2. **The Social Dilemma** (Netflix) - A thought-provoking look at the impact of social media on society, featuring interviews with tech experts and former employees of major tech companies.\n\n3. **My Octopus Teacher** (Netflix) - A heartwarming documentary about a filmmaker who forms a bond with an octopus in a South African kelp forest, showcasing the beauty of nature and the",
+          "correct": false,
+          "ctx_tokens": 109198,
+          "est_cost_usd": 0.0329394,
+          "error": null
+        },
+        "bm25": {
+          "pred": "Try watching **Dynasties** or **Chasing Coral** for captivating nature documentaries.",
+          "correct": false,
+          "ctx_tokens": 1996,
+          "est_cost_usd": 0.0007787999999999998,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Consider watching **Dynasties** or **Chasing Coral** for engaging nature documentaries.",
+          "correct": false,
+          "ctx_tokens": 1996,
+          "est_cost_usd": 0.0007787999999999998,
+          "error": null
+        }
+      },
+      "n_lines": 502,
+      "n_sessions": 48,
+      "graph_concepts": 1500,
+      "graph_edges": 28984,
+      "graph_build_sec": 20.352,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "75f70248",
+      "question_type": "single-session-preference",
+      "question": "I've been sneezing quite a bit lately. Do you think it might be my living room?",
+      "question_date": "2023/05/30 (Tue) 17:51",
+      "gold": "The user would prefer responses that consider the potential impact of their cat, Luna, and her shedding on their sneezing, as well as the recent deep clean of the living room and its possible effect on stirring up dust. They might not prefer responses that fail to take into account these specific details previously mentioned, such as generic suggestions or unrelated factors.",
+      "retrievers": {
+        "full_context": {
+          "pred": "It could be possible; allergens like dust, pet dander, or mold in your living room might be causing your sneezing.",
+          "correct": false,
+          "ctx_tokens": 7342,
+          "est_cost_usd": 0.0023826,
+          "error": null,
+          "trunc_cap": 8000
+        },
+        "bm25": {
+          "pred": "It could be due to dust or allergens in your living room, especially with a shedding cat.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "It could be due to dust or allergens in your living room, especially with a shedding cat.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        }
+      },
+      "n_lines": 466,
+      "n_sessions": 42,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "caf03d32",
+      "question_type": "single-session-preference",
+      "question": "I've been struggling with my slow cooker recipes. Any advice on getting better results?",
+      "question_date": "2023/05/30 (Tue) 23:44",
+      "gold": "The user would prefer responses that provide tips and advice specifically tailored to their slow cooker experiences, utilizing their recent success with beef stew and interest in making yogurt in the slow cooker. They might not prefer general slow cooker recipes or advice unrelated to their specific experiences and interests.",
+      "retrievers": {
+        "full_context": {
+          "pred": "Focus on precise measurements, use fresh ingredients, and adjust cooking times based on your slow cooker model for better results.",
+          "correct": false,
+          "ctx_tokens": 7550,
+          "est_cost_usd": 0.002445,
+          "error": null,
+          "trunc_cap": 8000
+        },
+        "bm25": {
+          "pred": "Experiment with different cooking times, adjust seasonings, and ensure proper ingredient ratios for better results.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "Focus on precise temperature control, use fresh ingredients, and adjust cooking times based on your slow cooker model for better results.",
+          "correct": false,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        }
+      },
+      "n_lines": 493,
+      "n_sessions": 51,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "c7cf7dfd",
+      "question_type": "single-session-assistant",
+      "question": "I'm going back to our previous conversation about traditional Indian embroidery and tailoring techniques. Can you remind me of the name of that online store based in India that sells traditional Indian fabrics, threads, and embellishments?",
+      "question_date": "2023/05/30 (Tue) 20:59",
+      "gold": "Nostalgia",
+      "retrievers": {
+        "full_context": {
+          "pred": "The online store based in India that sells traditional Indian fabrics, threads, and embellishments is called \"Craftsvilla.\"",
+          "correct": false,
+          "ctx_tokens": 2629,
+          "est_cost_usd": 0.0009686999999999999,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "The online store based in India is called Nostalgia.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The online store based in India is called Nostalgia.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        }
+      },
+      "n_lines": 520,
+      "n_sessions": 51,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "89527b6b",
+      "question_type": "single-session-assistant",
+      "question": "I'm going back to our previous conversation about the children's book on dinosaurs. Can you remind me what color was the scaly body of the Plesiosaur in the image?",
+      "question_date": "2023/05/30 (Tue) 23:39",
+      "gold": "The Plesiosaur had a blue scaly body.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The scaly body of the Plesiosaur in the image was described as blue.",
+          "correct": true,
+          "ctx_tokens": 109506,
+          "est_cost_usd": 0.0330318,
+          "error": null
+        },
+        "bm25": {
+          "pred": "The Plesiosaur had a blue scaly body.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram": {
+          "pred": "The conversation history does not mention the color of the scaly body of the Plesiosaur.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null,
+          "impl_version": 2
+        },
+        "engram_bm25": {
+          "pred": "The scaly body of the Plesiosaur was blue.",
+          "correct": true,
+          "ctx_tokens": 1998,
+          "est_cost_usd": 0.0007794,
+          "error": null
+        },
+        "engram_expand": {
+          "pred": "The Plesiosaur had a blue scaly body.",
+          "correct": true,
+          "ctx_tokens": 1980,
+          "est_cost_usd": 0.000774,
+          "error": null,
+          "impl_version": 1
+        }
+      },
+      "n_lines": 467,
+      "n_sessions": 45,
+      "graph_concepts": 1500,
+      "graph_edges": 28927,
+      "graph_build_sec": 18.968,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "ac031881",
+      "question_type": "single-session-assistant",
+      "question": "I'm trying to recall what the designation on my jumpsuit was that helped me find the file number in the records room?",
+      "question_date": "2023/05/30 (Tue) 22:54",
+      "gold": "The designation on your jumpsuit was 'LIV'.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The conversation context does not provide information about a jumpsuit or a file number in a records room.",
+          "correct": false,
+          "ctx_tokens": 7605,
+          "est_cost_usd": 0.0024614999999999997,
+          "error": null,
+          "trunc_cap": 8000
+        },
+        "bm25": {
+          "pred": "The designation on your jumpsuit was \"LIV.\"",
+          "correct": true,
+          "ctx_tokens": 1992,
+          "est_cost_usd": 0.0007775999999999998,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The designation on your jumpsuit was \"LIV.\"",
+          "correct": true,
+          "ctx_tokens": 1992,
+          "est_cost_usd": 0.0007775999999999998,
+          "error": null
+        }
+      },
+      "n_lines": 529,
+      "n_sessions": 47,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "e8a79c70",
+      "question_type": "single-session-assistant",
+      "question": "I was going through our previous conversation about making a classic French omelette, and I wanted to confirm - how many eggs did you say we need for the recipe?",
+      "question_date": "2023/05/30 (Tue) 08:29",
+      "gold": "2-3 eggs",
+      "retrievers": {
+        "full_context": {
+          "pred": "You need three eggs for the classic French omelette recipe.",
+          "correct": true,
+          "ctx_tokens": 2763,
+          "est_cost_usd": 0.0010088999999999999,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "You need 2-3 eggs for the classic French omelette recipe.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "You need 2-3 eggs for the classic French omelette recipe.",
+          "correct": true,
+          "ctx_tokens": 2000,
+          "est_cost_usd": 0.0007799999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 483,
+      "n_sessions": 44,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "e982271f",
+      "question_type": "single-session-assistant",
+      "question": "I was going through our previous chat. Can you remind me of the name of the last venue you recommended in the list of popular venues in Portland for indie music shows?",
+      "question_date": "2023/05/30 (Tue) 17:51",
+      "gold": "Revolution Hall",
+      "retrievers": {
+        "full_context": {
+          "pred": "The last venue I recommended for indie music shows in Portland was the \"Doug Fir Lounge.\"",
+          "correct": false,
+          "ctx_tokens": 2442,
+          "est_cost_usd": 0.0009126,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "The last venue recommended was Revolution Hall.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The last venue recommended was Revolution Hall.",
+          "correct": true,
+          "ctx_tokens": 1987,
+          "est_cost_usd": 0.0007761,
+          "error": null
+        }
+      },
+      "n_lines": 589,
+      "n_sessions": 54,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "1903aded",
+      "question_type": "single-session-assistant",
+      "question": "I think we discussed work from home jobs for seniors earlier. Can you remind me what was the 7th job in the list you provided?",
+      "question_date": "2023/05/30 (Tue) 20:57",
+      "gold": "Transcriptionist.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The 7th job in the list of work-from-home jobs for seniors was \"Customer Service Representative.\"",
+          "correct": false,
+          "ctx_tokens": 2718,
+          "est_cost_usd": 0.0009954,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "The conversation history does not include a specific list of work from home jobs for seniors, so I cannot provide the 7th job in that list.",
+          "correct": false,
+          "ctx_tokens": 1990,
+          "est_cost_usd": 0.0007769999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The conversation history does not include a list of work from home jobs for seniors, so I cannot provide the 7th job.",
+          "correct": false,
+          "ctx_tokens": 1999,
+          "est_cost_usd": 0.0007796999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 486,
+      "n_sessions": 47,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "8752c811",
+      "question_type": "single-session-assistant",
+      "question": "I remember you provided a list of 100 prompt parameters that I can specify to influence your output. Can you remind me what was the 27th parameter on that list?",
+      "question_date": "2023/05/30 (Tue) 21:25",
+      "gold": "The 27th parameter was 'Sound effects (e.g., ambient, diegetic, non-diegetic, etc.)'.",
+      "retrievers": {
+        "full_context": {
+          "pred": "I'm sorry, but I don't have access to the specific list of prompt parameters you mentioned.",
+          "correct": false,
+          "ctx_tokens": 2640,
+          "est_cost_usd": 0.000972,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "The 27th parameter on the list is \"Sound effects (e.g., ambient, diegetic, non-diegetic, etc.).\"",
+          "correct": true,
+          "ctx_tokens": 1981,
+          "est_cost_usd": 0.0007742999999999999,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The 27th parameter on the list is \"Sound effects (e.g., ambient, diegetic, non-diegetic, etc.).\"",
+          "correct": true,
+          "ctx_tokens": 1981,
+          "est_cost_usd": 0.0007742999999999999,
+          "error": null
+        }
+      },
+      "n_lines": 493,
+      "n_sessions": 56,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    },
+    {
+      "question_id": "6ae235be",
+      "question_type": "single-session-assistant",
+      "question": "I remember you told me about the refining processes at CITGO's three refineries earlier. Can you remind me what kind of processes are used at the Lake Charles Refinery?",
+      "question_date": "2023/05/30 (Tue) 23:41",
+      "gold": "Atmospheric distillation, fluid catalytic cracking (FCC), alkylation, and hydrotreating.",
+      "retrievers": {
+        "full_context": {
+          "pred": "The Lake Charles Refinery uses processes such as crude distillation, hydrocracking, and catalytic reforming.",
+          "correct": false,
+          "ctx_tokens": 1697,
+          "est_cost_usd": 0.0006891,
+          "error": null,
+          "trunc_cap": 3000
+        },
+        "bm25": {
+          "pred": "The Lake Charles Refinery uses atmospheric distillation, fluid catalytic cracking (FCC), alkylation, and hydrotreating processes.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null
+        },
+        "engram_bm25": {
+          "pred": "The Lake Charles Refinery uses atmospheric distillation, fluid catalytic cracking (FCC), alkylation, and hydrotreating processes.",
+          "correct": true,
+          "ctx_tokens": 1997,
+          "est_cost_usd": 0.0007791,
+          "error": null
+        }
+      },
+      "n_lines": 454,
+      "n_sessions": 48,
+      "graph_concepts": 0,
+      "graph_edges": 0,
+      "graph_build_sec": 0.0,
+      "full_context_truncated": true
+    }
+  ]
+}
