@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import math
 import os
 import sys
 from collections import Counter
@@ -306,17 +307,25 @@ def recommend(query: str, budget_tokens: int = 2000) -> dict:
     else:
         pred = {}
 
-    # Line candidates: max activation among concepts pointing at each line
+    # Discount corpus-wide boilerplate before choosing each line's provenance
+    # route, matching the document-frequency principle used by the demo.
     line_scores: Dict[Tuple[int, int], float] = {}
     line_concept: Dict[Tuple[int, int], Tuple[str, float]] = {}
+    line_direct: Dict[Tuple[int, int], bool] = {}
+    n_docs = max(1, len(files_table))
     for concept, score in act.items():
+        df = max(1, min(n_docs, nodes.get(concept, {}).get("df", 1)))
+        specificity = math.log((n_docs + 1.0) / df) / math.log(n_docs + 1.0) if n_docs > 1 else 1.0
+        weighted_score = score * specificity
+        direct = concept in seed_of
         for ptr in nodes.get(concept, {}).get("pointers", []):
             if not ptr or len(ptr) < 2:
                 continue
             key = (ptr[0], ptr[1])
-            if score > line_scores.get(key, 0):
-                line_scores[key] = score
-                line_concept[key] = (concept, score)
+            if (direct, weighted_score) > (line_direct.get(key, False), line_scores.get(key, 0)):
+                line_scores[key] = weighted_score
+                line_concept[key] = (concept, weighted_score)
+                line_direct[key] = direct
 
     rec_rows: List[dict] = []
     for (fidx, lno), base_act in sorted(
@@ -326,7 +335,11 @@ def recommend(query: str, budget_tokens: int = 2000) -> dict:
         session, text = _resolve_line(fidx, lno, files_table)
         lex = _lexical_overlap(qtoks, text)
         strength = base_act * (1.0 + 0.25 * lex)
-        path = _path_strings(concept, lno, pred)
+        path = (
+            [f"query_term '{concept}'", f"-> line {lno}"]
+            if line_direct[(fidx, lno)]
+            else _path_strings(concept, lno, pred)
+        )
         rec_rows.append(
             {
                 "line_idx": lno,
@@ -338,10 +351,11 @@ def recommend(query: str, budget_tokens: int = 2000) -> dict:
                 "_tokens": _count_tokens(text),
                 "_fidx": fidx,
                 "_concept": concept,
+                "_direct": line_direct[(fidx, lno)],
             }
         )
 
-    rec_rows.sort(key=lambda r: (-r["strength"], r["_tokens"], r["line_idx"]))
+    rec_rows.sort(key=lambda r: (-r["_direct"], -r["strength"], r["_tokens"], r["line_idx"]))
     rec_rows = _dedupe_recommendation_rows(rec_rows)
 
     affordable = [r for r in rec_rows if r["_tokens"] <= budget_tokens]

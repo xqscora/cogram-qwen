@@ -1,0 +1,3928 @@
+{
+  "protocol": "in-corpus same-repo routing proxy, seed=42, max150, budget220",
+  "baseline_sha256": "1a23a5d8017cc14414a809d2f1c5d46c8a8c54964e8b4992f57bf123d0044c3f",
+  "current_sha256": "b4cce1e3fcfdea7356b83842988597076b674b986f4c730cfe2282413e648369",
+  "graph_sha256": "bc782c552e2356e1ec3ac771ecf0641dbc08d05a10df6948f0ec217e7851df3e",
+  "performance_optimizations": "Both paths use the same immutable graph, cached source resolver and exact token counter; no latency claim.",
+  "limitations": "Public queries are already represented in the graph; not held-out issue resolution. Duplicate issues reported separately. No LLM calls or actual bug fixes.",
+  "summary": {
+    "before": {
+      "queries": 150,
+      "top1_hits": 6,
+      "top3_hits": 6,
+      "distinct_issues": 28,
+      "distinct_issue_top1_hits": 1,
+      "all_within_220_token_budget": true
+    },
+    "after": {
+      "queries": 150,
+      "top1_hits": 86,
+      "top3_hits": 86,
+      "distinct_issues": 28,
+      "distinct_issue_top1_hits": 18,
+      "all_within_220_token_budget": true
+    }
+  },
+  "cases": [
+    {
+      "source": "swe_0129_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0040_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0299_fair-workflows__nanopub-140_transcript.md",
+      "issue_key": "fair-workflows__nanopub-140",
+      "gold_repo": "fair-workflows/nanopub",
+      "query": "Deprecation warning coming from click When running test: ```tests/test_setup_profile.py::test_provided_keypair_copied_to_nanopub_dir``` There is a deprecation warning: ``` /usr/local/lib/python3.9/site-packages/click/core.py:1048: DeprecationWarning: Parameter callbacks take 3 args, (ctx, param, value). The 2-arg style is deprecated and will be removed in 8.0. value, args = param.handle_parse_resu",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0268_auth0__auth0-python-500_transcript.md",
+      "issue_key": "auth0__auth0-python-500",
+      "gold_repo": "auth0/auth0-python",
+      "query": "Connections.all() should accept name ### Checklist - [X] I have looked into the [Readme](https://github.com/auth0/auth0-python#readme) and [Examples](https://github.com/auth0/auth0-python/blob/master/EXAMPLES.md), and have not found a suitable solution or answer. - [X] I have looked into the [API documentation](https://auth0-python.readthedocs.io/en/latest/) and have not found a suitable solution ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "auth0/auth0-python",
+          "auth0/auth0-python",
+          "auth0/auth0-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0246_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0157_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0119_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0585_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0104_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0452_rapidpro__rapidpro-python-66_transcript.md",
+      "issue_key": "rapidpro__rapidpro-python-66",
+      "gold_repo": "rapidpro/rapidpro-python",
+      "query": "TembaSerializationException always has the message <exception str() failed> Hello, I was using the `TembaObject.deserialize()` method to deserialize archived `Run` objects in my project (https://github.com/JustFixNYC/tenants2/pull/902) and noticed that an unusual exception was occurring. It's easily reproducible in the REPL: ``` >>> from temba_client.serialization import TembaSerializationExceptio",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0047_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0045_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0110_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0241_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0256_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0543_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0042_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0221_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0449_pydantic__pydantic-2167_transcript.md",
+      "issue_key": "pydantic__pydantic-2167",
+      "gold_repo": "pydantic/pydantic",
+      "query": "Required field default value inconsistent (None vs. Ellipsis) between statically and dynamically created models with v1.7.3 ### Checks * [x] I added a descriptive title to this issue * [x] I have searched (google, github) for similar issues and couldn't find anything * [x] I have read and followed [the docs](https://pydantic-docs.helpmanual.io/) and still think this is a bug <!-- Sorry to sound so",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "pydantic/pydantic",
+          "pydantic/pydantic",
+          "pydantic/pydantic"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0243_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0479_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0303_gibsramen__evident-23_transcript.md",
+      "issue_key": "gibsramen__evident-23",
+      "gold_repo": "gibsramen/evident",
+      "query": "Fix NaN issue in OnlyOneCategory exception https://github.com/gibsramen/evident/blob/d1a3fe636764f47278d4cbade05534a2b57d1b87/evident/_exceptions.py#L61 If NaN exists, this line will fail because the number of \"unique\" levels > 1 INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0007_Melevir__cognitive_complexity-15_transcript.md",
+      "issue_key": "Melevir__cognitive_complexity-15",
+      "gold_repo": "Melevir/cognitive_complexity",
+      "query": "Incorrect counting for sequences of binary logical operators According to the Cognitive Complexity specification, sequences of binary logical operators receive a fundamental increment (B1) but not a nesting increment (B3). This is further supported by the `overriddenSymbolFrom()` example in appendix C. The existing `test_real_function()` should be calculated as follows; note the +4 for the multili",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "Melevir/cognitive_complexity",
+          "Melevir/cognitive_complexity",
+          "Melevir/cognitive_complexity"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0179_python-visualization__folium-1633_transcript.md",
+      "issue_key": "python-visualization__folium-1633",
+      "gold_repo": "python-visualization/folium",
+      "query": "map.get_bounds() fails for map with GeometryCollection **Describe the bug** If you add a GeoJson with a GeometryCollection to a Map, Map.get_bounds fails **To Reproduce** ``` import folium",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0591_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0368_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0579_mherrmann__gitignore_parser-38_transcript.md",
+      "issue_key": "mherrmann__gitignore_parser-38",
+      "gold_repo": "mherrmann/gitignore_parser",
+      "query": "Unsafe string slicing in IgnoreRule.match method. It fails with Path type. ## Synopsis After upgrade from `0.1.0` to `0.1.1` I faced an issue with existing test. Looks like there is unsafe operation with `abs_path` which supposed to be a string only. That's a wrong assuming, because most libraries support the both types: [str, Path]. Code impacted: https://github.com/mherrmann/gitignore_parser/blo",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0175_python-visualization__folium-1633_transcript.md",
+      "issue_key": "python-visualization__folium-1633",
+      "gold_repo": "python-visualization/folium",
+      "query": "map.get_bounds() fails for map with GeometryCollection **Describe the bug** If you add a GeoJson with a GeometryCollection to a Map, Map.get_bounds fails **To Reproduce** ``` import folium",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0238_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0364_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0594_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0109_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0409_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0114_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0387_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0372_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0288_fair-workflows__nanopub-140_transcript.md",
+      "issue_key": "fair-workflows__nanopub-140",
+      "gold_repo": "fair-workflows/nanopub",
+      "query": "Deprecation warning coming from click When running test: ```tests/test_setup_profile.py::test_provided_keypair_copied_to_nanopub_dir``` There is a deprecation warning: ``` /usr/local/lib/python3.9/site-packages/click/core.py:1048: DeprecationWarning: Parameter callbacks take 3 args, (ctx, param, value). The 2-arg style is deprecated and will be removed in 8.0. value, args = param.handle_parse_resu",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0059_iterative__dvc-5785_transcript.md",
+      "issue_key": "iterative__dvc-5785",
+      "gold_repo": "iterative/dvc",
+      "query": "Document or change default behaviour of `dvc exp run --run-all` ## Issue description The documentation of `dvc exp run --run-all` does not to match the actual behaviour, since experiments seem to be run in parallel by default, unless explicitly set to sequential execution using `dvc exp run --run-all --jobs 1` ### Affected version 2.0.7 (Ubuntu 20.04) ## Reproduction steps",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "pydantic/pydantic",
+          "pydantic/pydantic",
+          "pydantic/pydantic"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0490_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0142_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0407_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0095_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0319_googleapis__python-api-core-546_transcript.md",
+      "issue_key": "googleapis__python-api-core-546",
+      "gold_repo": "googleapis/python-api-core",
+      "query": "Feat: Add support for universe_domain as a client option for TPC `universe_domain` is required as an optional field in `google.api_core.ClientOptions` to enable users to explicitly configure universe domain as a client option. This will enable API endpoint to be resolved using a templated value if a universe domain is specified or otherwise default to GDU. ```python3 # user configures the universe",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0390_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0214_tehmaze__ansi-34_transcript.md",
+      "issue_key": "tehmaze__ansi-34",
+      "gold_repo": "tehmaze/ansi",
+      "query": "RGB background color support hi! Adding a switch to `rgb256(r,g,b, bg=True)` you could return ``` if bg: return sequence('m', fields=3)(48, 5, colour)",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tehmaze/ansi",
+          "tehmaze/ansi",
+          "tehmaze/ansi"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0086_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0061_joke2k__django-environ-358_transcript.md",
+      "issue_key": "joke2k__django-environ-358",
+      "gold_repo": "joke2k/django-environ",
+      "query": "Fix _cast_urlstr to use unquote vs unquote_plus Currently, `Env.db_url_config` uses `_cast_urlstr` to url unquote the username and password from database connection URIs. The underlying problem occurs when you try to use a `+` in your postgres password. `_cast_urlstr` uses `unquote_plus`, ([introduced in this PR here](https://github.com/joke2k/django-environ/pull/69)), which which will turn plus s",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0251_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0315_googleapis__python-api-core-546_transcript.md",
+      "issue_key": "googleapis__python-api-core-546",
+      "gold_repo": "googleapis/python-api-core",
+      "query": "Feat: Add support for universe_domain as a client option for TPC `universe_domain` is required as an optional field in `google.api_core.ClientOptions` to enable users to explicitly configure universe domain as a client option. This will enable API endpoint to be resolved using a templated value if a universe domain is specified or otherwise default to GDU. ```python3 # user configures the universe",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0096_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0586_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0118_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0567_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0573_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0484_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0393_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0182_python-visualization__folium-1633_transcript.md",
+      "issue_key": "python-visualization__folium-1633",
+      "gold_repo": "python-visualization/folium",
+      "query": "map.get_bounds() fails for map with GeometryCollection **Describe the bug** If you add a GeoJson with a GeometryCollection to a Map, Map.get_bounds fails **To Reproduce** ``` import folium",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0399_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0383_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0232_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0291_fair-workflows__nanopub-140_transcript.md",
+      "issue_key": "fair-workflows__nanopub-140",
+      "gold_repo": "fair-workflows/nanopub",
+      "query": "Deprecation warning coming from click When running test: ```tests/test_setup_profile.py::test_provided_keypair_copied_to_nanopub_dir``` There is a deprecation warning: ``` /usr/local/lib/python3.9/site-packages/click/core.py:1048: DeprecationWarning: Parameter callbacks take 3 args, (ctx, param, value). The 2-arg style is deprecated and will be removed in 8.0. value, args = param.handle_parse_resu",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0088_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0192_python-visualization__folium-1633_transcript.md",
+      "issue_key": "python-visualization__folium-1633",
+      "gold_repo": "python-visualization/folium",
+      "query": "map.get_bounds() fails for map with GeometryCollection **Describe the bug** If you add a GeoJson with a GeometryCollection to a Map, Map.get_bounds fails **To Reproduce** ``` import folium",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0539_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0544_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0140_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0098_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0254_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0212_tehmaze__ansi-34_transcript.md",
+      "issue_key": "tehmaze__ansi-34",
+      "gold_repo": "tehmaze/ansi",
+      "query": "RGB background color support hi! Adding a switch to `rgb256(r,g,b, bg=True)` you could return ``` if bg: return sequence('m', fields=3)(48, 5, colour)",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tehmaze/ansi",
+          "tehmaze/ansi",
+          "tehmaze/ansi"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0153_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0493_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0346_joke2k__faker-828_transcript.md",
+      "issue_key": "joke2k__faker-828",
+      "gold_repo": "joke2k/faker",
+      "query": "Locales for cs_CZ fake.name_male() shows a female name Looking at the very last example [here](https://faker.readthedocs.io/en/latest/locales/cs_CZ.html#faker-providers-misc). The name is actually a female name. ``` fake.name_male() # 'Ing. Sára Mašková CSc.' ```",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "joke2k/faker",
+          "joke2k/faker",
+          "joke2k/faker"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0564_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0304_gibsramen__evident-23_transcript.md",
+      "issue_key": "gibsramen__evident-23",
+      "gold_repo": "gibsramen/evident",
+      "query": "Fix NaN issue in OnlyOneCategory exception https://github.com/gibsramen/evident/blob/d1a3fe636764f47278d4cbade05534a2b57d1b87/evident/_exceptions.py#L61 If NaN exists, this line will fail because the number of \"unique\" levels > 1 INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0127_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0370_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0593_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0451_rapidpro__rapidpro-python-66_transcript.md",
+      "issue_key": "rapidpro__rapidpro-python-66",
+      "gold_repo": "rapidpro/rapidpro-python",
+      "query": "TembaSerializationException always has the message <exception str() failed> Hello, I was using the `TembaObject.deserialize()` method to deserialize archived `Run` objects in my project (https://github.com/JustFixNYC/tenants2/pull/902) and noticed that an unusual exception was occurring. It's easily reproducible in the REPL: ``` >>> from temba_client.serialization import TembaSerializationExceptio",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0413_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0417_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0043_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0132_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0440_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0024_geopandas__geopandas-3240_transcript.md",
+      "issue_key": "geopandas__geopandas-3240",
+      "gold_repo": "geopandas/geopandas",
+      "query": "REGR: incorrect order of left sjoin with within predicate I think that #2353 has caused a regression when doing left join with within predicate: ```py pts = gpd.GeoDataFrame(geometry=gpd.points_from_xy(*np.random.rand(2, 10))) polys = gpd.GeoDataFrame({\"id\":[1, 2, 3, 4]}, geometry=[ box(0, 0, .5, .5),",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geopandas/geopandas",
+          "geopandas/geopandas",
+          "geopandas/geopandas"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0432_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0177_python-visualization__folium-1633_transcript.md",
+      "issue_key": "python-visualization__folium-1633",
+      "gold_repo": "python-visualization/folium",
+      "query": "map.get_bounds() fails for map with GeometryCollection **Describe the bug** If you add a GeoJson with a GeometryCollection to a Map, Map.get_bounds fails **To Reproduce** ``` import folium",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0223_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0152_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0048_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0123_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0487_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0502_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0309_gibsramen__evident-23_transcript.md",
+      "issue_key": "gibsramen__evident-23",
+      "gold_repo": "gibsramen/evident",
+      "query": "Fix NaN issue in OnlyOneCategory exception https://github.com/gibsramen/evident/blob/d1a3fe636764f47278d4cbade05534a2b57d1b87/evident/_exceptions.py#L61 If NaN exists, this line will fail because the number of \"unique\" levels > 1 INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0468_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0565_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0512_adamchainz__ec2-metadata-350_transcript.md",
+      "issue_key": "adamchainz__ec2-metadata-350",
+      "gold_repo": "adamchainz/ec2-metadata",
+      "query": "availability_zone_id may return 404 ### Python Version 3.8.10 ### Package Version 2.7.0 ### Description",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adamchainz/ec2-metadata",
+          "adamchainz/ec2-metadata",
+          "adamchainz/ec2-metadata"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0508_adamchainz__ec2-metadata-350_transcript.md",
+      "issue_key": "adamchainz__ec2-metadata-350",
+      "gold_repo": "adamchainz/ec2-metadata",
+      "query": "availability_zone_id may return 404 ### Python Version 3.8.10 ### Package Version 2.7.0 ### Description",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adamchainz/ec2-metadata",
+          "adamchainz/ec2-metadata",
+          "adamchainz/ec2-metadata"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0355_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0273_eEcoLiDAR__laserchicken-135_transcript.md",
+      "issue_key": "eEcoLiDAR__laserchicken-135",
+      "gold_repo": "eEcoLiDAR/laserchicken",
+      "query": "density absolute mean bug uses ground points only where it should use everything but ground points INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can use any bash commands or the special interface to help you.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0220_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0472_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0488_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0349_joke2k__faker-828_transcript.md",
+      "issue_key": "joke2k__faker-828",
+      "gold_repo": "joke2k/faker",
+      "query": "Locales for cs_CZ fake.name_male() shows a female name Looking at the very last example [here](https://faker.readthedocs.io/en/latest/locales/cs_CZ.html#faker-providers-misc). The name is actually a female name. ``` fake.name_male() # 'Ing. Sára Mašková CSc.' ```",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "joke2k/faker",
+          "joke2k/faker",
+          "joke2k/faker"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0252_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0538_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0150_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0554_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0141_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0401_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0306_gibsramen__evident-23_transcript.md",
+      "issue_key": "gibsramen__evident-23",
+      "gold_repo": "gibsramen/evident",
+      "query": "Fix NaN issue in OnlyOneCategory exception https://github.com/gibsramen/evident/blob/d1a3fe636764f47278d4cbade05534a2b57d1b87/evident/_exceptions.py#L61 If NaN exists, this line will fail because the number of \"unique\" levels > 1 INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0293_fair-workflows__nanopub-140_transcript.md",
+      "issue_key": "fair-workflows__nanopub-140",
+      "gold_repo": "fair-workflows/nanopub",
+      "query": "Deprecation warning coming from click When running test: ```tests/test_setup_profile.py::test_provided_keypair_copied_to_nanopub_dir``` There is a deprecation warning: ``` /usr/local/lib/python3.9/site-packages/click/core.py:1048: DeprecationWarning: Parameter callbacks take 3 args, (ctx, param, value). The 2-arg style is deprecated and will be removed in 8.0. value, args = param.handle_parse_resu",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0149_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0402_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0318_googleapis__python-api-core-546_transcript.md",
+      "issue_key": "googleapis__python-api-core-546",
+      "gold_repo": "googleapis/python-api-core",
+      "query": "Feat: Add support for universe_domain as a client option for TPC `universe_domain` is required as an optional field in `google.api_core.ClientOptions` to enable users to explicitly configure universe domain as a client option. This will enable API endpoint to be resolved using a templated value if a universe domain is specified or otherwise default to GDU. ```python3 # user configures the universe",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0237_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0317_googleapis__python-api-core-546_transcript.md",
+      "issue_key": "googleapis__python-api-core-546",
+      "gold_repo": "googleapis/python-api-core",
+      "query": "Feat: Add support for universe_domain as a client option for TPC `universe_domain` is required as an optional field in `google.api_core.ClientOptions` to enable users to explicitly configure universe domain as a client option. This will enable API endpoint to be resolved using a templated value if a universe domain is specified or otherwise default to GDU. ```python3 # user configures the universe",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0222_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0203_scikit-hep__cabinetry-396_transcript.md",
+      "issue_key": "scikit-hep__cabinetry-396",
+      "gold_repo": "scikit-hep/cabinetry",
+      "query": "Handle partially fixed parameters in `model_utils` API The support for partially fixed parameters (such as `staterror` with zeros in some bins) in `pyhf` 0.7 can result in scenarios where the behavior of `suggested_fixed_as_bool` is undefined, see https://github.com/scikit-hep/pyhf/issues/1944. This currently breaks `model_utils.prefit_uncertainties` in `cabinetry` (and also affects `model_utils.u",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "scikit-hep/cabinetry",
+          "scikit-hep/cabinetry",
+          "scikit-hep/cabinetry"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0524_adbar__simplemma-114_transcript.md",
+      "issue_key": "adbar__simplemma-114",
+      "gold_repo": "adbar/simplemma",
+      "query": "in_target_language can count words twice and return ratios above 1.0 I noticed that in current `main` version, the `in_target_language` function can return ratios above 1.0 when given more than one language and the words in the input are matching several languages. Example: >>> in_target_language('It was a true gift', lang='en') 1.0 >>> in_target_language('It was a true gift', lang='de')",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0085_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0278_eEcoLiDAR__laserchicken-135_transcript.md",
+      "issue_key": "eEcoLiDAR__laserchicken-135",
+      "gold_repo": "eEcoLiDAR/laserchicken",
+      "query": "density absolute mean bug uses ground points only where it should use everything but ground points INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can use any bash commands or the special interface to help you.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0270_auth0__auth0-python-500_transcript.md",
+      "issue_key": "auth0__auth0-python-500",
+      "gold_repo": "auth0/auth0-python",
+      "query": "Connections.all() should accept name ### Checklist - [X] I have looked into the [Readme](https://github.com/auth0/auth0-python#readme) and [Examples](https://github.com/auth0/auth0-python/blob/master/EXAMPLES.md), and have not found a suitable solution or answer. - [X] I have looked into the [API documentation](https://auth0-python.readthedocs.io/en/latest/) and have not found a suitable solution ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "auth0/auth0-python",
+          "auth0/auth0-python",
+          "auth0/auth0-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0553_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0406_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0039_hugovk__pypistats-41_transcript.md",
+      "issue_key": "hugovk__pypistats-41",
+      "gold_repo": "hugovk/pypistats",
+      "query": "ValueError: month must be in 1..12 ```console $ pypistats python_minor pylast -m 2018-11 | category | percent | downloads | |----------|--------:|----------:| | 2.7 | 48.62% | 2,307 |",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "hugovk/pypistats",
+          "hugovk/pypistats",
+          "hugovk/pypistats"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0460_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0071_joke2k__django-environ-358_transcript.md",
+      "issue_key": "joke2k__django-environ-358",
+      "gold_repo": "joke2k/django-environ",
+      "query": "Fix _cast_urlstr to use unquote vs unquote_plus Currently, `Env.db_url_config` uses `_cast_urlstr` to url unquote the username and password from database connection URIs. The underlying problem occurs when you try to use a `+` in your postgres password. `_cast_urlstr` uses `unquote_plus`, ([introduced in this PR here](https://github.com/joke2k/django-environ/pull/69)), which which will turn plus s",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0093_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0340_joke2k__faker-828_transcript.md",
+      "issue_key": "joke2k__faker-828",
+      "gold_repo": "joke2k/faker",
+      "query": "Locales for cs_CZ fake.name_male() shows a female name Looking at the very last example [here](https://faker.readthedocs.io/en/latest/locales/cs_CZ.html#faker-providers-misc). The name is actually a female name. ``` fake.name_male() # 'Ing. Sára Mašková CSc.' ```",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "joke2k/faker",
+          "joke2k/faker",
+          "joke2k/faker"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0550_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0425_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0574_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0234_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0324_googleapis__python-api-core-546_transcript.md",
+      "issue_key": "googleapis__python-api-core-546",
+      "gold_repo": "googleapis/python-api-core",
+      "query": "Feat: Add support for universe_domain as a client option for TPC `universe_domain` is required as an optional field in `google.api_core.ClientOptions` to enable users to explicitly configure universe domain as a client option. This will enable API endpoint to be resolved using a templated value if a universe domain is specified or otherwise default to GDU. ```python3 # user configures the universe",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0590_microsoft__electionguard-python-83_transcript.md",
+      "issue_key": "microsoft__electionguard-python-83",
+      "gold_repo": "microsoft/electionguard-python",
+      "query": "error handling for words.py `src/electionguard/words.py`: the methods here don't handle bad input, and will instead implicitly raise errors or have undesirable behavior. Perhaps these should return `Optional` results, and require error checking. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can ",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0215_tehmaze__ansi-34_transcript.md",
+      "issue_key": "tehmaze__ansi-34",
+      "gold_repo": "tehmaze/ansi",
+      "query": "RGB background color support hi! Adding a switch to `rgb256(r,g,b, bg=True)` you could return ``` if bg: return sequence('m', fields=3)(48, 5, colour)",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tehmaze/ansi",
+          "tehmaze/ansi",
+          "tehmaze/ansi"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0213_tehmaze__ansi-34_transcript.md",
+      "issue_key": "tehmaze__ansi-34",
+      "gold_repo": "tehmaze/ansi",
+      "query": "RGB background color support hi! Adding a switch to `rgb256(r,g,b, bg=True)` you could return ``` if bg: return sequence('m', fields=3)(48, 5, colour)",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tehmaze/ansi",
+          "tehmaze/ansi",
+          "tehmaze/ansi"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0500_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0257_astarte-platform__astarte-device-sdk-python-98_transcript.md",
+      "issue_key": "astarte-platform__astarte-device-sdk-python-98",
+      "gold_repo": "astarte-platform/astarte-device-sdk-python",
+      "query": "Sending empty payloads unsets properties Sending an empty payload through the `send` function for interfaces of type property sends an unset command. The bug originates here: https://github.com/astarte-platform/astarte-device-sdk-python/blob/60a3f88e7ca5089aedc91e29f87a2cc463929a10/astarte/device/device.py#L500-L504 A simple fix can be to change `if payload:` to `if payload is not None:`. INSTRUCT",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser",
+          "mherrmann/gitignore_parser"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0563_geomet__geomet-101_transcript.md",
+      "issue_key": "geomet__geomet-101",
+      "gold_repo": "geomet/geomet",
+      "query": "srid option for geomet.esri.dumps does not do anything The option for defining output srid for the esrijson geometry is actively ignored I have installed version 1.0.0 ```python import geomet.esri from pprint import pprint",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "geomet/geomet",
+          "geomet/geomet",
+          "geomet/geomet"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0143_networkx__networkx-7024_transcript.md",
+      "issue_key": "networkx__networkx-7024",
+      "gold_repo": "networkx/networkx",
+      "query": "```is_k_edge_connected``` incorrectly returns True for k=2 with multi-component graphs without bridges ### Current Behavior The implementation of ```is_k_edge_connected``` currently defers to ```is_connected``` for k=1, to ```has_bridges``` for k=2, and runs the full check for k>2. As a result, this returns True for a multi-component graph without bridges. ### Expected Behavior Since the graph has",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "adbar/simplemma",
+          "microsoft/electionguard-python",
+          "adbar/simplemma"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0302_gibsramen__evident-23_transcript.md",
+      "issue_key": "gibsramen__evident-23",
+      "gold_repo": "gibsramen/evident",
+      "query": "Fix NaN issue in OnlyOneCategory exception https://github.com/gibsramen/evident/blob/d1a3fe636764f47278d4cbade05534a2b57d1b87/evident/_exceptions.py#L61 If NaN exists, this line will fail because the number of \"unique\" levels > 1 INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "rapidpro/rapidpro-python",
+          "rapidpro/rapidpro-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0006_Melevir__cognitive_complexity-15_transcript.md",
+      "issue_key": "Melevir__cognitive_complexity-15",
+      "gold_repo": "Melevir/cognitive_complexity",
+      "query": "Incorrect counting for sequences of binary logical operators According to the Cognitive Complexity specification, sequences of binary logical operators receive a fundamental increment (B1) but not a nesting increment (B3). This is further supported by the `overriddenSymbolFrom()` example in appendix C. The existing `test_real_function()` should be calculated as follows; note the +4 for the multili",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "Melevir/cognitive_complexity",
+          "Melevir/cognitive_complexity",
+          "Melevir/cognitive_complexity"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0462_tempoCollaboration__OQuPy-74_transcript.md",
+      "issue_key": "tempoCollaboration__OQuPy-74",
+      "gold_repo": "tempoCollaboration/OQuPy",
+      "query": "Bug when loading a process tensor from file I've found a bug when loading a process tensor with non-diagonal coupling from a file. Here is a (minimal) failing example: ```python import oqupy TEMP_FILE = \"./temp-process-tensor.hdf5\"",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy",
+          "tempoCollaboration/OQuPy"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0389_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0073_just-work__fffw-100_transcript.md",
+      "issue_key": "just-work__fffw-100",
+      "gold_repo": "just-work/fffw",
+      "query": "Trim sets incorrect duration If Trim end is after EOF, stream output duration is greater than expected. INSTRUCTIONS: Now, you're going to solve this issue on your own. Your terminal session has started and you're in the repository's root directory. You can use any bash commands or the special interface to help you.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "just-work/fffw",
+          "just-work/fffw",
+          "just-work/fffw"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0369_konradhalas__dacite-216_transcript.md",
+      "issue_key": "konradhalas__dacite-216",
+      "gold_repo": "konradhalas/dacite",
+      "query": "Incorrect work when using field with default_factory **Describe the bug** `default_factory` is called only once if a field absent in the data **To Reproduce** ```python #!/usr/bin/env python",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "konradhalas/dacite",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0292_fair-workflows__nanopub-140_transcript.md",
+      "issue_key": "fair-workflows__nanopub-140",
+      "gold_repo": "fair-workflows/nanopub",
+      "query": "Deprecation warning coming from click When running test: ```tests/test_setup_profile.py::test_provided_keypair_copied_to_nanopub_dir``` There is a deprecation warning: ``` /usr/local/lib/python3.9/site-packages/click/core.py:1048: DeprecationWarning: Parameter callbacks take 3 args, (ctx, param, value). The 2-arg style is deprecated and will be removed in 8.0. value, args = param.handle_parse_resu",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub",
+          "fair-workflows/nanopub"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0404_package-url__packageurl-python-29_transcript.md",
+      "issue_key": "package-url__packageurl-python-29",
+      "gold_repo": "package-url/packageurl-python",
+      "query": "PackageURL type is not hashable Storing `PackageURL` instances in a set can be useful. Currently attempting this fails with the following error: ``` Python 3.8.2 (default, Feb 26 2020, 22:21:03) [GCC 9.2.1 20200130] on linux Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "package-url/packageurl-python",
+          "package-url/packageurl-python",
+          "package-url/packageurl-python"
+        ],
+        "top1_hit": true,
+        "top3_hit": true,
+        "tokens_used": 220
+      }
+    },
+    {
+      "source": "swe_0151_ppizarror__pygame-menu-357_transcript.md",
+      "issue_key": "ppizarror__pygame-menu-357",
+      "gold_repo": "ppizarror/pygame-menu",
+      "query": "RangeSlider assertion error when modifying minimum range value **Environment information** Describe your environment information, such as: - SO: Windows - python version: v3.8.5 - pygame version: v2.0.1",
+      "before": {
+        "top_repos": [
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python",
+          "microsoft/electionguard-python"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      },
+      "after": {
+        "top_repos": [
+          "konradhalas/dacite",
+          "microsoft/electionguard-python",
+          "konradhalas/dacite"
+        ],
+        "top1_hit": false,
+        "top3_hit": false,
+        "tokens_used": 220
+      }
+    }
+  ]
+}
