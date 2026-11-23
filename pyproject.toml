@@ -7,7 +7,7 @@ name = "cogram-qwen"
 version = "0.1.0"
 description = "Cogram MemoryAgent - zero-LLM procedural memory layer for coding agents (concept graph with tick-based decay and file:line provenance) + Qwen Cloud generation step. Global AI Hackathon Series with Qwen Cloud, Track 1: MemoryAgent."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "PolyForm Noncommercial 1.0.0" }
 authors = [{ name = "Cora Zeng" }]
 requires-python = ">=3.9"
 dependencies = [
