@@ -3,7 +3,7 @@
 **Submitted to the Global AI Hackathon Series with Qwen Cloud — Track 1: MemoryAgent.**
 This is a separate Qwen Cloud submission fork of [Cogram](https://github.com/xqscora/cogram).
 The current version is source-available under PolyForm Noncommercial 1.0.0. Earlier versions through
-commit `742ef426bdf2f1414e6004f48a2cacb411a8601a` were published under Apache-2.0; those prior grants
+commit `f6713c2cb19a1b07345ed1bf797df848d95f0a2b` were published under Apache-2.0; those prior grants
 remain in effect for recipients of those versions.
 
 ![Architecture](docs/architecture.png)
@@ -99,7 +99,7 @@ python swe_recall_demo.py         # asks a new question, shows what it recalls a
 
 The current version is licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0). It permits use under its noncommercial terms; commercial use requires separate permission. This is source-available, not an OSI-approved open-source license.
 
-Versions through commit `742ef426bdf2f1414e6004f48a2cacb411a8601a` were separately offered under Apache-2.0. That license grant is perpetual for copies received under it and cannot be retroactively withdrawn; its text is preserved in `LICENSE-APACHE-2.0-PRIOR-VERSIONS`.
+Versions through commit `f6713c2cb19a1b07345ed1bf797df848d95f0a2b` were separately offered under Apache-2.0. That license grant is perpetual for copies received under it and cannot be retroactively withdrawn; its text is preserved in `LICENSE-APACHE-2.0-PRIOR-VERSIONS`.
 
 ## Author
 
